@@ -1,0 +1,1727 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>PPaul Dequito</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/pfz.png" />
+  <link href="assets/css/minimal.css?v=6" rel="stylesheet" />
+  <link href="assets/css/effects.css?v=6" rel="stylesheet">
+  <link href="assets/css/output.css?v=6" rel="stylesheet">
+  <link href="assets/css/disable-features.css" rel="stylesheet">
+
+  <!-- Swiper 3D Cards + Coverflow (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <script src="Font-Awesome-7.x/js/all.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/portfolio-data.js?v=1"></script>
+  <script src="assets/js/pfz.js?v=8"></script>
+  <script src="assets/js/disable-devtools.js"></script>
+</head>
+<!-- <body> -->
+<body oncontextmenu="return false;">
+  
+  <!-- Hero Section -->
+  <header id="hero">
+    <div class="max-w-3xl mx-auto px-4">
+      <!-- Profile Info -->
+      <div class="grid grid-cols-12 gap-2 sm:gap-3 md:gap-4 py-2 sm:py-3 items-center">
+
+      <div class="col-span-12 my-0">
+        <div class="flex items-start gap-3 sm:gap-5 px-2 py-2 sm:px-6 sm:py-5 bg-white/10 backdrop-blur-sm text-left">
+          
+          <div class="profile-image-wrapper shrink-0">
+            <img
+              src="assets/img/ppd1.jpg"
+              id="pfz_img"
+              alt="Peter Paul Dequito"
+              class="profile-image w-20 sm:w-24 md:w-32 rounded-xl object-cover shadow-md"
+              />
+          </div>
+
+          <div class="min-w-0 flex-1 space-y-1">
+            <h1 class="flex items-center gap-1 responsive-title font-bold leading-tight pb-0 mb-0">
+              <span>PPaul Dequito</span>
+              <img
+                id="verifyIcon"
+                src="assets/img/verify2.png"
+                alt="verified"
+                class="verified w-3 sm:w-4 md:w-5 ml-1"
+                aria-label="verified"
+              />
+            </h1>
+
+
+            <div class="my-1 font-size-11 text-gray-400 text-[11px] sm:text-sm md:text-base opacity-90 leading-snug">
+              <i class="fas fa-map-marker-alt mr-1"></i>Iloilo, Philippines
+            </div>
+
+            <div class="my-0 font-size-12x text-gray-500 text-[11px] sm:text-sm md:text-base font-medium opacity-95 leading-snug">
+              IT Specialist | Cybersecurity Analyst
+            </div>
+
+            <div class="hero-actions mt-2 flex flex-wrap items-stretch gap-1.5 sm:gap-2">
+              <a
+                class="btn-pfz_y active hero-btn hero-btn-message flex min-w-0 mt-2 items-center justify-center"
+                onclick="showSection('contact'); return false;"
+                href="#"
+              >
+                <span class="hero-btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    <path d="M8 9h8"/>
+                    <path d="M8 13h5"/>
+                  </svg>
+                </span>
+                <span data-translate="about" class="hero-btn-label whitespace-nowrap">Message</span>
+              </a>
+
+              <a
+                class="btn-pfz_y hero-btn hero-btn-cv flex min-w-0 mt-2 my-auto items-center justify-center"
+                href="assets/pdf/cv.pdf"
+                target="_blank"
+              >
+                <span class="hero-btn-label whitespace-nowrap">CV</span>
+                <span class="hero-btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v10"/>
+                    <path d="m7 11 5 5 5-5"/>
+                    <path d="M5 20h14"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      </div>
+      <!-- End of Profile Info -->
+
+      <div class="nav sticky top-0 z-50 transition-all duration-200" id="sticky-nav">
+        <div class="sticky-hero-title">PPAUL DEQUITO</div>
+        <div class="section-nav mb-0 bg-transparent backdrop-blur-md px-2 sm:px-4 py-0">
+          <nav class="flex items-center justify-between w-full overflow-x-auto nav-container">
+            <!-- LEFT: Nav items -->
+            <div class="flex items-center space-x-1 sm:space-x-0 overflow-x-auto nav-items-group">
+              <a class="nav-btn active flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 text-blue-500" data-section="about" onclick="showSection('about')">
+                <i class="fa-solid fa-house text-sm sm:text-base"></i>
+                <span data-translate="about" class="text-xs sm:text-sm whitespace-nowrap">HOME</span>
+              </a>
+              <a class="nav-btn flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 text-black dark:text-gray-300" data-section="experience" onclick="showSection('experience')">
+                <i class="fas fa-briefcase text-sm sm:text-base"></i>
+                <span data-translate="experience" class="text-xs sm:text-sm whitespace-nowrap">EXPERIENCE</span>
+              </a>
+              <a class="nav-btn flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 text-black dark:text-gray-300" data-section="projects" onclick="showSection('projects')">
+                <i class="fas fa-project-diagram text-sm sm:text-base"></i>
+                <span data-translate="projects" class="text-xs sm:text-sm whitespace-nowrap">PROJECTS</span>
+              </a>
+              <a class="nav-btn flex items-center space-x-1 sm:space-x-2 px-2 sm:px-3 py-2 text-black dark:text-gray-300" data-section="contact" onclick="showSection('contact')">
+                <i class="fas fa-envelope text-sm sm:text-base"></i>
+                <span data-translate="contact" class="text-xs sm:text-sm whitespace-nowrap">CONTACT</span>
+              </a>
+            </div>
+
+            <!-- RIGHT: Theme dark mode / light mode -->
+            <div class="flex-shrink-0 ml-auto relative">
+              <button onclick="toggleThemeMode()" id="theme-btn" class="theme-switch" type="button" aria-label="Theme: Light" aria-pressed="false">
+                <span class="theme-switch-track" aria-hidden="true">
+                  <span class="theme-switch-icon theme-switch-icon-moon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M21 12.8A9 9 0 1 1 11.2 3a7.2 7.2 0 0 0 9.8 9.8Z"></path>
+                    </svg>
+                  </span>
+                  <span class="theme-switch-icon theme-switch-icon-sun">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="4"></circle>
+                      <path d="M12 2v2.2M12 19.8V22M4.22 4.22l1.56 1.56M18.22 18.22l1.56 1.56M2 12h2.2M19.8 12H22M4.22 19.78l1.56-1.56M18.22 5.78l1.56-1.56"></path>
+                    </svg>
+                  </span>
+                  <span class="theme-switch-thumb"></span>
+                </span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+ 
+
+  
+  <main>
+    <button
+      id="floatingBackBtn"
+      class="floating-back-btn hidden"
+      type="button"
+      onclick="goBackToLastSection()"
+      aria-label="Go back"
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+
+    <!-- About Content -->
+    <section id="about" class="content-section">
+      <div class="max-w-3xl mx-auto px-4"> 
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 pb-2 items-start">
+          
+          <div class="lg:col-span-7 bg-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm">
+            <h2 class="text-3xl my-0 text-base sm:text-xl md:text-xl font-bold">About me</h2>
+            <p class="mt-2 font-size-12x leading-relaxed">
+             I'm a dedicated IT professional with experience supporting IT operations in distribution and retail sectors. Experience in IT Systems Administration, IT Operations Management, and IT Processes & Workflows, including Endpoint Protection, Firewall, Active Directory, SAP ERP, network/system monitoring, and database management.
+            </p>
+            <p class="mt-2 font-size-12x leading-relaxed">
+             Proficient in IT team support, mentoring, and multi-branch operations. Currently strengthening expertise in cybersecurity, threat monitoring, and system protection to enhance operational security and reliability.
+            </p>
+            
+            <p class="mt-2 font-size-12x leading-relaxed">
+              Passionate about leveraging technology to solve complex problems and drive business success. Committed to continuous learning and professional growth in the ever-evolving IT landscape.
+            </p>
+
+            <p class="mt-2 font-size-12x leading-relaxed">
+              Lately, I've been diving into the modern world of AI-driven automation. 
+              I am currently focusing on AI Orchestration, where I bridge the gap between traditional IT infrastructure and AI power-tools. 
+              By building automated workflows that connect databases, CSVs, and 3rd-party APIs (like social media and messaging apps) to AI models, 
+              I create self-sustaining ecosystems and dynamic dashboards that transform raw data into actionable business intelligence.
+            </p>
+
+            <div class="highlights-grid pt-4">
+              <div class="highlight-item">
+                  <i class="fa-solid fa-shield-virus font-size-12x"></i>
+                  <div>
+                      <span class="font-size-12x font-bold m-0">Infrastructure Hardening</span>
+                      <p>
+                        <span class="font-size-11 m-0">Configuring firewalls and AD policies to minimize attack surfaces.</span>
+                      </p>
+                  </div>
+              </div>
+              <div class="highlight-item">
+                  <i class="fa-solid fa-microchip font-size-12x"></i>
+                  <div>
+                      <span class="font-size-12x font-bold m-0">Systems Admin</span>
+                      <p>
+                        <span class="font-size-11 m-0">Managing 50+ devices and 150+ users with 99.9% uptime.</span>
+                      </p>
+                  </div>
+              </div>
+              <div class="highlight-item">
+                  <i class="fa-solid fa-file-shield font-size-12x"></i>
+                  <div>
+                      <span class="font-size-12x font-bold my-0">Compliance & Audit</span>
+                      <p>
+                        <span class="font-size-11 my-0">Standardizing IT workflows and disaster recovery protocols.</span>
+                      </p>
+                  </div>
+              </div>
+              <div class="highlight-item">
+                  <i class="fa-solid fa-user-check font-size-12x"></i>
+                  <div>
+                      <span class="font-size-12x font-bold m-0">IT Mentorship</span>
+                      <p>
+                        <span class="font-size-11 m-0">Leading multi-branch teams and providing Level 0-3 support.</span>
+                      </p>
+                  </div>
+              </div>
+              <div class="highlight-item">
+                  <i class="fa-solid fa-cloud font-size-12x"></i>
+                  <div>
+                      <span class="font-size-12x font-bold m-0">Cloud Administration | Cybersecurity</span>
+                      <p>
+                        <span class="font-size-11 m-0">Managing and tracking cloud security incidents and vulnerabilities.</span>
+                      </p>
+                  </div>
+              </div>
+          </div>
+
+          </div>
+
+          <!-- Skills -->
+          <div class="lg:col-span-5">
+            <div class="bg-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm">
+              <div class="relative flex items-start justify-between">
+                <h2 class="text-2xl f16 my-0 font-bold">Core Strengths</h2>
+                <a class="pfz-btn-view items-center gap-1 px-3 text-sm" href="#" data-modal-section="strengths">
+                  <i class="fas fa-eye"></i>&nbsp;View All
+                </a>
+              </div>
+              <div class="unified-list mt-2">
+                <ul class="list-disc list-inside text-lg leading-relaxed mb-0">
+                  <li><i class="fa-solid fa-headset"></i> IT Support L0 - L3</li>
+                  <li><i class="fa-solid fa-laptop-medical"></i> Remote Support</li>
+                  <li><i class="fa-solid fa-network-wired"></i> Network Administration</li>
+                  <li><i class="fa-solid fa-building-shield"></i> Firewall Administration</li>
+                  <li><i class="fa-solid fa-shield-halved"></i> Cybersecurity Analysis</li>
+                  <li><i class="fa-solid fa-fire-extinguisher"></i> Incident Response</li>
+                  <li><i class="fa-solid fa-search"></i> Vulnerability Assessment</li>
+                  <li><i class="fa-solid fa-magnifying-glass-chart"></i> Security Awareness Training</li>
+                  <li><i class="fa-brands fa-microsoft"></i> Office 365 Fundamentals</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Experience -->
+            <div class="bg-gray-100 dark:bg-gray-800 mt-2 p-4 shadow-sm rounded-sm">
+              <div class="relative flex items-start justify-between">
+                <h2 class="text-2xl my-0 text-base sm:text-sm md:text-md font-bold">Experience</h2>
+                <a class="pfz-btn-view items-center gap-1 px-3 text-sm" href="#" onclick="showSection('experience'); return false;">
+                  <i class="fas fa-eye"></i>&nbsp;View All
+                </a>
+              </div>
+
+              <div class="unified-list mt-2">
+                <ul class="list-disc list-inside text-lg leading-relaxed mb-0">
+                  <li class="relative"> <div class="flex justify-between items-center">
+                    <div>
+                      <i class="fas fa-building text-blue-600"></i>
+                      <span class="f14 font-bold">SYL Hermanos</span> 
+                    </div>
+                    <span class="total-company-exp text-sm text-gray-600 font-semibold"></span>
+                  </div>
+
+                  <p class="flex justify-between items-center px-4 my-0 text-gray-650">
+                    <span>IT Specialist</span> 
+                    <span class="date-span text-gray-500 small" data-start="2023-10" data-end="2026-04">
+                      10.2023 - 04.2026
+                    </span>
+                  </p>
+                  <p class="flex justify-between items-center px-4 my-0 text-gray-650">
+                    <span>IT Assistant</span> 
+                    <span class="date-span text-gray-500 small" data-start="2022-11" data-end="2023-10">
+                      11.2022 - 10.2023
+                    </span>
+                  </p>
+                  <p class="flex justify-between items-center px-4 my-0 text-gray-650">
+                    <span class="small text-gray-600">Retail & Distribution / Manufacturing</span>
+                  </p>
+                  </li>
+
+                  <li class="relative mt-2"> <div class="flex justify-between items-center">
+                    <div>
+                      <i class="fas fa-building text-gray-500"></i>
+                      <span class="f14 font-bold">E2E Process & Experts</span> 
+                    </div>
+                    <span class="total-company-exp text-sm text-gray-600 font-semibold"></span>
+                  </div>
+
+                  <p class="flex justify-between items-center px-4 my-0 text-gray-650">
+                    <span>IT Intern</span> 
+                    <span class="date-span text-gray-500 small" data-start="2020-01" data-end="2020-05">
+                      01.2020 - 05.2020
+                    </span>
+                  </p>
+                  <p class="flex justify-between items-center px-4 my-0 text-gray-650">
+                    <span class="small text-gray-600">Software Development</span>
+                  </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="bg-gray-100 dark:bg-gray-800 mt-2 p-4 shadow-sm rounded-sm">
+              <div class="relative flex items-start justify-between">
+                <h2 class="text-2xl my-0 text-base sm:text-sm md:text-md font-bold">Education</h2>
+                <a class="pfz-btn-view items-center gap-1 px-3 text-sm" href="#" data-modal-section="education">
+                  <i class="fas fa-eye"></i>&nbsp;View All
+                </a>
+              </div>
+
+              <div class="unified-list mt-2">
+                <ul class="list-disc list-inside text-lg leading-relaxed mb-0">
+                  <li class="relative mt-2"> <div class="flex justify-between items-center">
+                    <div>
+                      <span class="f14 font-bold">Bachelor of Science in Information Technology</span>
+                    </div>
+                    <span class="date-span text-gray-500 small">
+                      2016 - 2020
+                    </span>
+                  </div>
+
+                  <p class="f10 font-extralight inline-flex items-center mb-0 mt-1 text-gray-400">
+                    <i class="fas fa-graduation-cap"></i>&nbsp;ILOILO SCIENCE AND TECHNOLOGY UNIVERSITY
+                  </p>
+                  
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        </div>
+        
+        <!-- Tech Stack -->
+        <div class="lg:col-span-12">
+          <div class="g-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm">
+            <div class="relative flex items-start justify-between">
+                <div class="text-base sm:text-sm md:text-md my-0 font-bold">Tech Stack
+                  <small class="font-size-10 text-gray-500 text-weight-50">&nbsp;-&nbsp;&nbsp;Tools at a glance</small>
+                </div>
+                <a class="pfz-btn-view1 items-center gap-1 px-3 text-sm" href="#" data-inline-expand="tech-stack">
+                  <i class="fas fa-eye"></i>&nbsp;View All
+                </a>
+              </div>
+
+              <div class="techstack-inline-shell" data-techstack-shell>
+                <div class="sub-title f14 font-bold my-2">I.T Operations</div>
+                <div class="flex flex-wrap gap-3">
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-windows"></i>&nbsp;Windows</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-server"></i>&nbsp;Active Directory</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-shield-halved"></i>&nbsp;Endpoint Protection</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-network-wired"></i>&nbsp;Inhouse Networking</span>
+                </div>
+                <div class="techstack-inline-group techstack-inline-badges" data-techstack-extra hidden>
+                  <div class="flex flex-wrap gap-3">
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;SQL Server Management</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-cloud"></i>&nbsp;Cloud Computing & Services</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-code"></i>&nbsp;Basic Scripting</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-git-alt"></i>&nbsp;Git</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-github"></i>&nbsp;GitHub</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-cogs"></i>&nbsp;IT Automation</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-network-wired"></i>&nbsp;System & Network Monitoring</span>
+                  </div>
+                </div>
+                <hr class="my-3 border-gray-300 dark:border-gray-700">
+
+                <div class="sub-title f14 font-bold my-2">Cybersecurity</div>
+                <div class="flex flex-wrap gap-3">
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-shield-alt"></i>&nbsp;Fortinet Fortigate</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-shield-virus"></i>&nbsp;Sophos</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-magnifying-glass-chart"></i>&nbsp;Zabbix</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-server"></i>&nbsp;Active Directory</span>
+                </div>
+                <div class="techstack-inline-group techstack-inline-badges" data-techstack-extra hidden>
+                  <div class="flex flex-wrap gap-3">
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-whmcs"></i>&nbsp;Wazuh (SIEM)</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-street-view"></i>&nbsp;SolarWinds</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-cloud"></i>&nbsp;Microsoft 365 Defender</span>
+                  </div>
+                </div>
+                <hr class="my-3 border-gray-300 dark:border-gray-700">
+
+                <div class="techstack-inline-group" data-techstack-extra hidden>
+                  <div class="sub-title f14 font-bold mb-1">Frontend</div>
+                  <div class="flex flex-wrap gap-3">
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-html5"></i>&nbsp;HTML5</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-css"></i>&nbsp;CSS</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-tailwind-css"></i>&nbsp;Tailwind CSS</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-bootstrap"></i>&nbsp;Bootstrap</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-js"></i>&nbsp;JavaScript</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-react"></i>&nbsp;React</span>
+                  </div>
+                  <hr class="my-3 border-gray-300 dark:border-gray-700">
+                </div>
+
+                <div class="techstack-inline-group" data-techstack-extra hidden>
+                  <div class="sub-title f14 font-bold mb-1">Backend</div>
+                  <div class="flex flex-wrap gap-3">
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;MySQL</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-php"></i>&nbsp;PHP</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-python"></i>&nbsp;Python</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-java"></i>&nbsp;Java</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-js"></i>&nbsp;JavaScript</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-node"></i>&nbsp;Node.js</span>
+                  </div>
+                  <hr class="my-3 border-gray-300 dark:border-gray-700">
+                </div>
+
+                <div class="techstack-inline-group" data-techstack-extra hidden>
+                  <div class="sub-title f14 font-bold mb-1">Databases</div>
+                  <div class="flex flex-wrap gap-3">
+                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;SQL Server Management</span>
+                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;MongoDB</span>
+                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;PhpMyAdmin</span>
+                  </div>
+                  <hr class="my-3 border-gray-300 dark:border-gray-700">
+                </div>
+
+                <div class="techstack-inline-group" data-techstack-extra hidden>
+                  <div class="sub-title f14 font-bold mb-1">Mobile Development</div>
+                  <div class="flex flex-wrap gap-3">
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Flutter</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-code"></i>&nbsp;Dart</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-android"></i>&nbsp;Android</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-apple"></i>&nbsp;iOS</span>
+                  </div>
+                  <hr class="my-3 border-gray-300 dark:border-gray-700">
+                </div>
+
+                <div class="techstack-inline-group" data-techstack-extra hidden>
+                  <div class="sub-title f14 font-bold mb-1">AI Tools</div>
+                  <div class="flex flex-wrap gap-3">
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-robot"></i>&nbsp;ChatGPT</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-robot"></i>&nbsp;Gemini</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-brain"></i>&nbsp;Microsoft Copilot</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-microchip"></i>&nbsp;Claude</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+      <!-- Projects & Certifications -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 py-2 items-start">
+        <!-- Projects -->
+        <div class="lg:col-span-6">
+          <div class="bg-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm">
+            <div class="relative flex items-start justify-between mb-1">
+                <h2 class="text-sm my-0 text-base sm:text-sm md:text-sm font-bold">Projects</h2>
+                <a class="pfz-btn-view items-center gap-1 px-3 text-sm" href="#" onclick="showSection('projects'); return false;">
+                  <i class="fas fa-eye"></i>&nbsp;View All
+                </a>
+            </div>
+
+            <div class="swiper projectSwiper w-full">
+              <div class="swiper-wrapper">
+                
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-landmark"></i> GovTech Platform</span>
+                        <span class="project-card-stat">28 modules</span>
+                      </div>
+                      <h3 class="font-size-16b">LGU Municipality Transparency System (MTS)</h3>
+                      <p class="project-card-summary" aria-label="summary">
+                        Centralized publishing for municipalities and barangays with role-based content workflows...
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-lgu-mts'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-top">
+                          <span></span><span></span><span></span>
+                        </div>
+                        <div class="project-preview-banner">
+                          <strong>Municipal Bulletin</strong>
+                          <small>14 Active Posts</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>12</strong><small>Barangays</small></span>
+                          <span><strong>03</strong><small>Approval Queues</small></span>
+                          <span><strong>99%</strong><small>Publish Rate</small></span>
+                        </div>
+                        <div class="project-preview-grid">
+                          <div class="project-preview-panel project-preview-panel-wide"></div>
+                          <div class="project-preview-panel"></div>
+                          <div class="project-preview-panel"></div>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Production-ready prototype</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Web CMS</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Barangay posting flow</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Emergency alerts</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-boxes-stacked"></i> Operations Dashboard</span>
+                        <span class="project-card-stat">Live stocks</span>
+                      </div>
+                      <h3 class="font-size-16b">Inventory Management System</h3>
+                      <p class="project-card-summary" aria-label="summary">
+                        Stock, procurement, and asset workflow platform built for branch-level visibility and... 
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-inventory-system'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-banner">
+                          <strong>Inventory Pulse</strong>
+                          <small>Realtime Stock View</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>248</strong><small>Active SKUs</small></span>
+                          <span><strong>07</strong><small>Branch Views</small></span>
+                          <span><strong>19</strong><small>Pending POs</small></span>
+                        </div>
+                        <div class="project-preview-inventory-label">
+                          <strong>Stock by Branch</strong>
+                          <small>North, Main, South, West</small>
+                        </div>
+                        <div class="project-preview-bars">
+                          <span style="height: 55%;"></span>
+                          <span style="height: 80%;"></span>
+                          <span style="height: 68%;"></span>
+                          <span style="height: 92%;"></span>
+                        </div>
+                        <div class="project-preview-inventory-stats">
+                          <span><strong>12</strong><small>Low Stock</small></span>
+                          <span><strong>34</strong><small>Received</small></span>
+                          <span><strong>21</strong><small>Issued</small></span>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Internal business system</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Web Dashboard</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Procurement queue</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Branch reports</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-shield-halved"></i> Security Operations</span>
+                        <span class="project-card-stat">24/7 watch</span>
+                      </div>
+                      <h3 class="font-size-16b">Advanced Endpoint Defense (EDR)</h3>
+                      <p class="project-card-summary">
+                        Endpoint defense rollout focused on threat visibility, rapid containment, and stronger workstation protection... 
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-edr'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-banner">
+                          <strong>Threat Status</strong>
+                          <small>Protected Endpoints</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>56</strong><small>Devices</small></span>
+                          <span><strong>04</strong><small>Open Alerts</small></span>
+                          <span><strong>1.2m</strong><small>Avg Response</small></span>
+                        </div>
+                        <div class="project-preview-ring">
+                          <div class="project-preview-ring-value">
+                            <strong>96.5%</strong>
+                            <small>Protected</small>
+                          </div>
+                        </div>
+                        <div class="project-preview-security-grid">
+                          <div class="project-preview-security-alert">
+                            <div class="project-preview-security-alert-icon">
+                              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                            </div>
+                            <div class="project-preview-security-alert-copy">
+                              <strong>04 Alerts</strong>
+                              <small>Devices under watch</small>
+                            </div>
+                          </div>
+                          <div class="project-preview-security-linechart">
+                            <div class="project-preview-security-linechart-svg" aria-hidden="true">
+                              <span class="project-preview-security-point project-preview-security-point-1"></span>
+                              <span class="project-preview-security-point project-preview-security-point-2"></span>
+                              <span class="project-preview-security-point project-preview-security-point-3"></span>
+                              <svg viewBox="0 0 120 52" preserveAspectRatio="none">
+                                <polyline points="8,34 48,18 78,26 112,10"></polyline>
+                              </svg>
+                            </div>
+                            <div class="project-preview-security-dates">
+                              <span>Mar 12</span>
+                              <span>Mar 18</span>
+                              <span>Mar 26</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Security rollout</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Endpoint Defense</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Isolation controls</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Alert telemetry</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-window-maximize"></i> Frontend Experience</span>
+                        <span class="project-card-stat">UI-ready</span>
+                      </div>
+                      <h3 class="font-size-16b">Company Customizable Profile Website (Landing Page)</h3>
+                      <p class="project-card-summary">
+                        Responsive company website with modular sections, cleaner branding, and a more polished business presentation...
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-company-profile'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-banner">
+                          <strong>Brand Home</strong>
+                          <small>Modular UI Sections</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>08</strong><small>Page Blocks</small></span>
+                          <span><strong>03</strong><small>Theme Modes</small></span>
+                          <span><strong>100%</strong><small>Responsive</small></span>
+                        </div>
+                        <div class="project-preview-window">
+                          <div class="project-preview-window-top"></div>
+                          <div class="project-preview-window-body">
+                            <span></span><span></span><span></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Client-facing website</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Responsive Web</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Responsive layout</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Editable blocks</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-truck-fast"></i> Logistics Platform</span>
+                        <span class="project-card-stat">Route logs</span>
+                      </div>
+                      <h3 class="font-size-16b">PFZ Delivery & Logistics Management System</h3>
+                      <p class="project-card-summary">
+                        Delivery operations system combining bookings, assignments, geotagging, and traceability in one workflow view... 
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-pfz-logistics'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-banner">
+                          <strong>Route Board</strong>
+                          <small>Assigned Deliveries</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>36</strong><small>Trips</small></span>
+                          <span><strong>11</strong><small>Active Loads</small></span>
+                          <span><strong>92%</strong><small>Traceability</small></span>
+                        </div>
+                        <div class="project-preview-mapline"></div>
+                        <div class="project-preview-stats">
+                          <span></span><span></span><span></span>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Operations platform</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Logistics Dashboard</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Booking flow</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Driver activity logs</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-user-graduate"></i> Academic Operations</span>
+                        <span class="project-card-stat">Registrar-ready</span>
+                      </div>
+                      <h3 class="font-size-16b">Registrar Inventory Management System</h3>
+                      <p class="project-card-summary">
+                        Registrar-focused platform combining AI dashboards, grade transparency with access limitations, fast encoder workflows, and connected sister modules...
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-registrar-inventory'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-banner">
+                          <strong>Registrar Console</strong>
+                          <small>Academic + Inventory View</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>AI</strong><small>Dashboards</small></span>
+                          <span><strong>Fast</strong><small>Encoding</small></span>
+                          <span><strong>Secure</strong><small>Access</small></span>
+                        </div>
+                        <div class="project-preview-registrar-card">
+                          <div class="project-preview-registrar-head">
+                            <strong>Student Record View</strong>
+                            <small>Authorized access only</small>
+                          </div>
+                          <div class="project-preview-registrar-body">
+                            <span></span><span></span><span></span>
+                          </div>
+                        </div>
+                        <div class="project-preview-registrar-tags">
+                          <span>Grades</span>
+                          <span>Blurred Files</span>
+                          <span>Sister Module</span>
+                        </div>
+                        <div class="project-preview-registrar-stats">
+                          <span><strong>1</strong><small>User View</small></span>
+                          <span><strong>AI</strong><small>Insights</small></span>
+                          <span><strong>Sync</strong><small>Modules</small></span>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Academic admin system</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Web Dashboard</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Grade transparency</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Confidential file controls</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-book-open-reader"></i> Research Archive</span>
+                        <span class="project-card-stat">Paperless flow</span>
+                      </div>
+                      <h3 class="font-size-16b">Thesis Inventory System</h3>
+                      <p class="project-card-summary">
+                        Thesis archiving platform built to reduce printing costs, keep electronic defense-ready copies, and improve search through AI-assisted dashboards and filtering...
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-thesis-inventory'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-banner">
+                          <strong>Thesis Archive</strong>
+                          <small>Digital Defense Support</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>Less</strong><small>Print Cost</small></span>
+                          <span><strong>AI</strong><small>Search</small></span>
+                          <span><strong>Easy</strong><small>Access</small></span>
+                        </div>
+                        <div class="project-preview-window">
+                          <div class="project-preview-window-top"></div>
+                          <div class="project-preview-window-body">
+                            <span></span><span></span><span></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Academic archive platform</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Web System</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Thesis archiving</span>
+                        <span><i class="fa-solid fa-circle-check"></i> AI search filtering</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide h-full">
+                  <div class="project-card holo-shine group">
+                    <div class="project-card-accent absolute inset-0 opacity-50"></div>
+                    <div class="relative p-6 z-10">
+                      <div class="project-card-kicker-row">
+                        <span class="project-card-kicker"><i class="fa-solid fa-tower-broadcast"></i> Emergency Response</span>
+                        <span class="project-card-stat">Dispatch ready</span>
+                      </div>
+                      <h3 class="font-size-16b">Police and Rescue Services Management System</h3>
+                      <p class="project-card-summary">
+                        Web and mobile response system for incident intake, dispatch visibility, evidence capture, and rescue coordination... 
+                        <a href="#" onclick="scrollToProjectCaseStudy('project-police-rescue'); return false;" class="text-blue-300 hover:text-cyan-200 font-size-12 transition-colors">see more →</a>
+                      </p>
+                      <div class="project-preview-shell project-preview-shell-card">
+                        <div class="project-preview-banner">
+                          <strong>Dispatch Center</strong>
+                          <small>Incident Queue</small>
+                        </div>
+                        <div class="project-preview-kpis">
+                          <span><strong>09</strong><small>Open Cases</small></span>
+                          <span><strong>05</strong><small>Units Live</small></span>
+                          <span><strong>2.4m</strong><small>ETA</small></span>
+                        </div>
+                        <div class="project-preview-response">
+                          <div class="project-preview-response-map"></div>
+                          <div class="project-preview-response-feed">
+                            <span></span><span></span><span></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="project-card-detail-grid">
+                        <div class="project-card-detail-item">
+                          <span>Status</span>
+                          <strong>Field-response concept build</strong>
+                        </div>
+                        <div class="project-card-detail-item">
+                          <span>Platform</span>
+                          <strong>Web + Mobile</strong>
+                        </div>
+                      </div>
+                      <div class="project-card-feature-row">
+                        <span><i class="fa-solid fa-circle-check"></i> Camera evidence</span>
+                        <span><i class="fa-solid fa-circle-check"></i> Geotagged response</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-scrollbar"></div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Projects -->
+
+        <!-- Certifications -->
+        <div class="lg:col-span-6">
+          <div class="g-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm">
+            <div class="relative flex items-start justify-between">
+                <h2 class="text-2xl f14 my-0 font-bold">Certifications</h2>
+                <a class="pfz-btn-view1 items-center gap-1 px-3 text-sm" href="#" data-inline-expand="certifications">
+                  <i class="fas fa-eye"></i>&nbsp;View All
+                </a>
+              </div>
+
+              <div class="unified-list mt-2">
+                <div class="certifications-list-shell" data-certifications-extra>
+                  <ul class="list-disc list-inside text-lg leading-relaxed mb-0 certifications-scroll-list">
+                    <li><i class="fa-solid fa-certificate"></i> Sophos Endpoint: Fundamentals</li>
+                    <li><i class="fa-solid fa-certificate"></i> Fortinet Fortigate: Fundamentals</li>
+                    <li><i class="fa-solid fa-certificate"></i> Microsoft 365 Certified: Fundamentals</li>
+                    <li><i class="fa-solid fa-certificate"></i> Microsoft Certified: Azure Fundamentals</li>
+                    <li><i class="fa-solid fa-certificate"></i> CompTIA Security+</li>
+                    <li><i class="fa-solid fa-certificate"></i> ITIL Foundation</li>
+                    <li><i class="fa-solid fa-certificate"></i> BPI Youth Resilient Program Foundation 2020</li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review & Recommendations -->
+        <div class="review-section p-4 sm:p-5 bg-gray-100 dark:bg-gray-800 shadow-sm rounded-sm">
+            <div class="relative flex items-start justify-between">
+                <h2 class="text-2xl f14 my-0 font-bold">Reviews & Recommendations</h2>
+                <a class="pfz-btn-view items-center gap-1 px-3 text-sm" href="#" data-modal-section="reviews">
+                  <i class="fas fa-eye"></i>&nbsp;View All
+                </a>
+            </div>
+
+            <div class="reviewSwiper swiper mt-3">
+              <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="review-card p-4 sm:p-5">
+                <div class="flex items-center gap-3 pb-2">
+                  <img
+                    src="assets/img_reviews_db/jahleelarizala.jpg" 
+                    style="width: 40px; height: 40px;"
+                    class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                  <div>
+                    <p class="font-size-12b mb-0">Jahleel Ariz***</p>
+                    <p class="font-size-12 text-gray-500 mb-0">Senior Media Buyer at LVBG</p>
+                  </div>
+                </div>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>"Peter Paul consistently demonstrates a positive attitude and strong work ethic. He is proactive, reliable, and shows initiative in completing tasks. He works well with others and maintains professionalism in different situations."</p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>"He has initiative and takes responsibility without needing constant supervision. He is also dependable and easy to work with."</p>
+              
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                  "Peter can continue to enhance his communication skills and confidence, especially in more challenging situations. With continuous growth, he has strong potential for further development and success in his career."
+                </p>
+                <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 26, 2026');</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="review-card p-4 sm:p-5">
+                <div class="flex items-center gap-3 pb-2">
+                  <img
+                    src="assets/img_reviews_db/Mellow Dequito.jpg" 
+                    style="width: 40px; height: 40px;"
+                    class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                  <div>
+                    <p class="font-size-12b mb-0">Mellow Jane Dequ***</p>
+                    <p class="font-size-12 text-gray-500 mb-0">Senior Media Marketing Specialist</p>
+                  </div>
+                </div>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>
+                  "Peter Paul is a powerhouse of execution. He brings a sharp eye for detail and a disciplined work ethic 
+                  that consistently stabilizes the team's workflow and keeps projects on track. 
+                  Highly recommended for any role that values reliability and results-driven performance."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>
+                  "I value his autonomy. He manages projects effectively from start to finish and is a truly dependable 
+                  partner who delivers high-quality results without needing constant oversight."
+                </p>
+              
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                  "I’d love to see Peter Paul continue to build his confidence in presenting his ideas during high-stakes 
+                  meetings. He has a lot of technical value to offer, and as he grows into a more vocal role, he’ll be unstoppable."
+                </p>
+                <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 26, 2026');</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="review-card p-4 sm:p-5">
+                <div class="flex items-center gap-3 pb-2">
+                  <img
+                    src="assets/img_reviews_db/Citra Nur Camaro.jpg" 
+                    style="width: 40px; height: 40px;"
+                    class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                  <div>
+                    <p class="font-size-12b mb-0">Citra Nur Cam***</p>
+                    <p class="font-size-12 text-gray-500 mb-0">CEO | Collective Creator</p>
+                  </div>
+                </div>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>
+                  "Peter Paul is someone who brings heart to everything he builds. He has a natural ability to connect with people and make every collaboration feel effortless."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>
+                  "His loyalty and genuine nature. He’s the kind of person you want in your corner because he’s as dependable as a friend as he is as a professional."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                  "Peter is so dedicated that he sometimes forgets to take a break! I want him to remember to celebrate his wins as much as he works for them."
+                </p>
+                <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 27, 2026');</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="review-card p-4 sm:p-5">
+                <div class="flex items-center gap-3 pb-2">
+                  <img
+                    src="assets/img_reviews_db/Margaret Kikker2.jpg" 
+                    style="width: 45px; height: 40px;"
+                    class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                  <div>
+                    <p class="font-size-12b mb-0">Margaret Kik***</p>
+                    <p class="font-size-12 text-gray-500 mb-0">CEO | Social Media Marketing Specialist</p>
+                  </div>
+                </div>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>
+                  "Peter has been a huge help to our brand. He doesn't just do what he’s told; 
+                  he actually thinks about how the technical side affects our growth. 
+                  It’s rare to find someone who understands both the 'business' side and the 'code' side as well as he does."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>
+                  "I really value how patient and helpful he is. He’s a natural at looking out for others and making sure everyone feels supported. 
+                  It’s rare to find someone who is so talented but also so willing to share what he knows to help a friend grow."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                  "I want to see Peter's keep leaning into that leadership side. He’s already a great mentor to the team, 
+                  and as he keeps building his own confidence, I know he’s going to achieve some really big things in his career."
+                </p>
+                <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 27, 2026');</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="review-card p-4 sm:p-5">
+                <div class="flex items-center gap-3 pb-2">
+                  <img
+                    src="assets/img_reviews_db/Luna Alice Rhodes.jpg" 
+                    style="width: 40px; height: 40px;"
+                    class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                  <div>
+                    <p class="font-size-12b mb-0">Luna Alice Rhod***</p>
+                    <p class="font-size-12 text-gray-500 mb-0">Entrepreneur | Model | Influencer</p>
+                  </div>
+                </div>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>
+                  "Peter Paul is the kind of friend you can always count on to bring a vision to life. He doesn't just understand the tech side; 
+                  he actually cares about the creative details and how everything looks and feels. 
+                  Working with him is always a positive experience because he treats every project with so much heart."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>
+                  "What I value most is how patient and supportive he is. 
+                  He’s a natural at helping others understand things without making them feel overwhelmed. 
+                  It’s rare to find someone who is so talented but also so willing to share what he knows to help a friend succeed."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                  "I’d love to see Peter Paul keep leaning into his leadership side. 
+                  He already helps so many people around him, and as he keeps growing, 
+                  I know he’s going to be a huge influence in his field. I'm excited to see where he goes next!"
+                </p>
+                <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 28, 2026');</p>
+              </div>
+            </div>
+
+             <div class="swiper-slide">
+              <div class="review-card p-4 sm:p-5">
+                <div class="flex items-center gap-3 pb-2">
+                  <img
+                    src="assets/img_reviews_db/Lee Nunna Kim.jpg" 
+                    style="width: 40px; height: 40px;"
+                    class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                  <div>
+                    <p class="font-size-12b mb-0">Lee Nunna Ki***</p>
+                    <p class="font-size-12 text-gray-500 mb-0">Software Engineer | Entrepreneur</p>
+                  </div>
+                </div>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>
+                  "Peter Paul has a solid grasp of technical architecture and a clear drive for efficiency. 
+                  He doesn't just write code; he builds solutions that are scalable and maintainable, 
+                  showing a level of technical maturity that is rare to find."
+                </p>
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>
+                  "His entrepreneurial mindset. He understands the 'why' behind the work, focusing on performance and user experience equally. He brings both logic and aesthetic value to a project.
+                  "
+                </p>
+              
+                <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                  "I’d encourage him to take more lead on architectural decisions. He has the technical foundation; now it’s just about stepping into that senior-level ownership
+                  "
+                </p>
+                <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 28, 2026');</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+                  <div class="review-card p-4 sm:p-5">
+                    <div class="flex items-center gap-3 pb-2">
+                      <img
+                        src="assets/img_reviews_db/pearlcarmelo.jpg"
+                        style="width: 40px; height: 40px;"
+                       class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                      <div>
+                        <p class="font-size-12b mb-0">Pearl Aljheane Carm***</p>
+                        <p class="font-size-12 text-gray-500 mb-0">Accountant at SYL Hermanos</p>
+                      </div>
+                    </div>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center">
+                      "Peter is a nice friend, work colleague and great mentor. He allowing me to grow in my career and gain valuable experience and basic knowledge regarding in IT basics."
+                    </p>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center">
+                      "His approachable, disciplined and willing to help, support and teach others."
+                    </p>
+                  
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">"Peter can continue to build on his strengths and work on areas for improvement."</p>
+                    <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 31, 2026');</p>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="review-card p-4 sm:p-5">
+                    <div class="flex items-center gap-3 pb-2">
+                      <img src="assets/img_reviews_db/andreo.png" 
+                       style="width: 40px; height: 40px;"
+                       class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                      <div>
+                        <p class="font-size-12b mb-0">Andreo Dalaw***</p>
+                        <p class="font-size-12 text-gray-500 mb-0">Remote Worker | IT Consultant at SYL Hermanos</p>
+                      </div>
+                    </div>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>
+                      "Having managed Peter Paul, I’ve seen his exceptional dedication firsthand. 
+                      He was a pillar of our IT support, consistently providing high-tier service while handling 
+                      infrastructure challenges with a calm, professional demeanor."
+                    </p>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>
+                      "His reliability under pressure. Peter Paul is the type of professional who ensures systems 
+                      stay stable and users stay supported, no matter how complex the technical environment gets.
+                      "
+                    </p>
+
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                      "He needs to keep up the good work, He can be a great asset to any team."
+                    </p>
+                    <p class="reviewed-date" hidden="true">$date_reviewed = new Date('April 03, 2026');</p>
+                  </div>
+                </div>
+                
+                <div class="swiper-slide">
+                  <div class="review-card p-4 sm:p-5">
+                    <div class="flex items-center gap-3 pb-2">
+                      <img
+                        src="assets/img_reviews_db/kimbaroa.jpg"
+                        style="width: 40px; height: 40px;"
+                        class="w-8 h-8 rounded-full mr-1 review-avatar-confidential"
+                      >
+                      <div>
+                        <p class="font-size-12b mb-0">Kim Jade Baro***</p>
+                        <p class="font-size-12 text-gray-500 mb-0">IT Supervisor at SYL Hermanos</p>
+                      </div>
+                    </div>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center">
+                      "Based on experience he is willing to contribute to the team and maintaining  transparent communication to his colleague."
+                    </p>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center">
+                      "He has a competitive spirit and willingness to learn. A good team player and mentoring others to grow and develop their skills."
+                    </p>
+                  
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                      "Peter needs a minimal improvement in management role overall he works well and positively contribute to the team."
+                    </p>
+                    <p class="reviewed-date" hidden="true">$date_reviewed = new Date('March 27, 2026');</p>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="review-card p-4 sm:p-5">
+                    <div class="flex items-center gap-3 pb-2">
+                      <img src="assets/img_reviews_db/jasonongsuco.jpg" 
+                       style="width: 40px; height: 40px;"
+                       class="w-8 h-8 rounded-full mr-1 review-avatar-confidential">
+                      <div>
+                        <p class="font-size-12b mb-0">Jason Bernard Ongs***</p>
+                        <p class="font-size-12 text-gray-500 mb-0">Remote Worker | Social Media Marketing | Video Editor</p>
+                      </div>
+                    </div>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-overall-performance>
+                      "Having known Peter Paul since his college days as his instructor and now as a friend, I can confidently say he is a dedicated and lifelong learner. He is remarkably proactive in adapting to new challenges and remains consistently eager to expand his technical expertise."
+                    </p>
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-like-the-most>
+                      "He is approachable, disciplined, and highly adaptable, with a genuine willingness to learn in any area that supports his further development."
+                    </p>
+
+                    <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+                      "If he continues to maintain this positive attitude and eagerness to learn, I have no doubt he will be a valuable asset to any team. I highly recommend him!"
+                    </p>
+                    <p class="reviewed-date" hidden="true">$date_reviewed = new Date('April 05, 2026');</p>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="swiper-pagination review-swiper-pagination"></div>
+            </div>
+        </div>
+        <!-- End of Review & Recommendations -->
+
+        <!-- Social Media links contents -->
+         <div class="review-section p-4 sm:p-5 bg-gray-100 dark:bg-gray-800 shadow-sm rounded-sm">
+            <div class="relative flex items-start justify-between">
+                <h2 class="text-2xl f14 my-0 font-bold">Social Media</h2>
+            </div>
+            <div class="unified-list mt-2">
+              <div class="social-links-shell">
+                <div class="social-links-scroll-list">
+                  <a class="social-link-card" href="mailto:peterpaul.dequito@gmail.com">
+                    <span class="social-link-icon"><i class="fa-solid fa-envelope"></i></span>
+                    <span class="social-link-copy">
+                      <strong>Gmail</strong>
+                    </span>
+                    <span class="social-link-action">Email</span>
+                  </a>
+
+                  <a class="social-link-card" href="https://web.facebook.com/puffzdequito" target="_blank" rel="noopener noreferrer">
+                    <span class="social-link-icon"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="social-link-copy">
+                      <strong>Facebook</strong>
+                    </span>
+                    <span class="social-link-action">Visit</span>
+                  </a>
+
+                  <div class="social-link-card social-link-card-muted" aria-disabled="true">
+                    <span class="social-link-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                    <span class="social-link-copy">
+                      <strong>LinkedIn</strong>
+                    </span>
+                    <span class="social-link-action">Soon</span>
+                  </div>
+
+                  <div class="social-link-card social-link-card-muted" aria-disabled="true">
+                    <span class="social-link-icon"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="social-link-copy">
+                      <strong>Instagram</strong>
+                    </span>
+                    <span class="social-link-action">Soon</span>
+                  </div>
+
+                  <div class="social-link-card social-link-card-muted" aria-disabled="true">
+                    <span class="social-link-icon"><i class="fa-brands fa-github"></i></span>
+                    <span class="social-link-copy">
+                      <strong>GitHub</strong>
+                    </span>
+                    <span class="social-link-action">Soon</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         <!-- End Social Media contents -->
+
+      </div>
+      <!-- End of Certifications -->
+
+      </div>
+      <!-- End of Projects & Certifications -->
+
+      
+      <!-- Gallery -->
+      <div class="lg:col-span-12 pb-2">
+        <div class="g-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm">
+          <div class="relative flex items-start justify-between">
+              <h2 class="text-2xl f14 my-0 font-bold">Gallery</h2>
+            </div>
+
+            <div class="gallerySwiper swiper gallery-carousel mt-3">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo1.jpg" alt="Gallery photo 1" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo2.jpg" alt="Gallery photo 2" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo3.jpg" alt="Gallery photo 3" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo4.jpg" alt="Gallery photo 4" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo5.jpg" alt="Gallery photo 5" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo6.jpg" alt="Gallery photo 6" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo7.jpg" alt="Gallery photo 7" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo8.jpg" alt="Gallery photo 8" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo9.jpg" alt="Gallery photo 9" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo10.jpg" alt="Gallery photo 9" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo11.jpg" alt="Gallery photo 9" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo12.jpg" alt="Gallery photo 9" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div class="swiper-pagination gallery-swiper-pagination mt-3"></div>
+            </div>
+        </div>
+      </div>
+      <!-- End of Gallery -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Experience Section -->
+  <section id="experienceSection" class="hidden">
+    <div class="max-w-3xl mx-auto px-4 py-8 mb-4">
+      <!-- Experience details will be dynamically loaded here -->
+      <div id="experienceDetails" class="mt-2"></div>
+    </div>
+  </section>
+  <!-- end of Experience Section -->
+
+  <!-- Projects & Certifications -->
+  <section id="projectsSection" class="hidden">
+    <div class="max-w-3xl mx-auto px-4 py-8 mb-4">
+      <div class="g-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm">
+        <h2 class="text-2xl f14 my-0 font-bold">Projects</h2>
+        <p class="font-size-12 text-gray-500 mt-2 mb-0">
+          Selected projects completed and deployed in real business and production environments.
+        </p>
+      </div>
+      <!-- Projects details will be dynamically loaded here -->
+      <div id="projectsDetails" class="mt-2"></div>
+    </div>
+  </section>
+  <!-- end of Projects & Certifications -->
+
+  <!-- Contact Section -->
+    <section id="contactSection" class="hidden">
+      <div class="max-w-3xl mx-auto px-4 py-8 mb-4">
+        <!-- Contact form or details will be dynamically loaded here -->
+        <div id="contactDetails">
+          <div class="g-gray-100 dark:bg-gray-800 p-4 shadow-sm rounded-sm contact-panel">
+            <h2 class="text-2xl f14 my-0 font-bold">Let’s Connect</h2>
+            <p class="font-size-12 text-gray-500 mb-0 contact-panel-intro">
+              Available for interviews, collaborations, and dependable IT support opportunities. 
+              Also open to guest lectures, speaking engagements, project partnerships, and knowledge-sharing initiatives in IT operations and cybersecurity.
+            </p>
+
+            <div class="contact-panel-grid mt-3">
+              <a class="contact-panel-card" href="mailto:peterpaul.dequito@gmail.com">
+                <span class="contact-panel-label">
+                  <i class="fa-solid fa-envelope"></i>
+                  Email
+                </span>
+                <strong>peterpaul.dequito@gmail.com</strong>
+                <strong>ppauldequito@pfz.com</strong>
+              </a>
+
+              <div class="contact-panel-card">
+                <span class="contact-panel-label">
+                  <i class="fa-solid fa-comments"></i>
+                  Meeting Options
+                </span>
+                <strong>Google Meet, Zoom, or Microsoft Teams</strong>
+                <span>Available for scheduled calls and professional discussions by invitation.</span>
+              </div>
+
+
+              <div class="contact-panel-card">
+                <span class="contact-panel-label">
+                  <i class="fa-solid fa-location-dot"></i>
+                  Location
+                </span>
+                <strong>Iloilo, Philippines</strong>
+                <span>Open to local, hybrid, and remote collaboration.</span>
+              </div>
+
+              <div class="contact-panel-card">
+                <span class="contact-panel-label">Current Focus</span>
+                <strong>IT Operations + Cybersecurity Growth</strong>
+                <span>Secure administration, monitoring, and resilient workflows.</span>
+              </div>
+            </div>
+
+            <div class="contact-social-wrap">
+              <p class="contact-social-title mb-0">Social Media</p>
+              <div class="social-links-shell contact-social-shell">
+                <div class="social-links-scroll-list">
+                  <a class="social-link-card" href="mailto:peterpaul.dequito@gmail.com">
+                    <span class="social-link-icon"><i class="fa-solid fa-envelope"></i></span>
+                    <span class="social-link-copy">
+                      <strong>Gmail</strong>
+                    </span>
+                    <span class="social-link-action">Email</span>
+                  </a>
+
+                  <a class="social-link-card" href="https://web.facebook.com/puffzdequito" target="_blank" rel="noopener noreferrer">
+                    <span class="social-link-icon"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span class="social-link-copy">
+                      <strong>Facebook</strong>
+                    </span>
+                    <span class="social-link-action">Visit</span>
+                  </a>
+
+                  <div class="social-link-card social-link-card-muted" aria-disabled="true">
+                    <span class="social-link-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                    <span class="social-link-copy">
+                      <strong>LinkedIn</strong>
+                    </span>
+                    <span class="social-link-action">Soon</span>
+                  </div>
+
+                  <div class="social-link-card social-link-card-muted" aria-disabled="true">
+                    <span class="social-link-icon"><i class="fa-brands fa-instagram"></i></span>
+                    <span class="social-link-copy">
+                      <strong>Instagram</strong>
+                    </span>
+                    <span class="social-link-action">Soon</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-panel-cta">
+              <div>
+                <p class="contact-panel-cta-title">Let’s talk.</p>
+                <p class="contact-panel-cta-copy mb-0">Send a quick email and I can share my CV, project context, or availability.</p>
+              </div>
+              <div class="contact-panel-cta-actions">
+                <a class="btn-pfz_y active" href="mailto:peterpaul.dequito@gmail.com?subject=Portfolio%20Inquiry%20for%20PPaul%20Dequito">Send Email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- end of Contact Section -->
+
+
+  <!-- Floating Chat Button -->
+  <button id="chatButton" class="chat-trigger-btn" type="button" aria-label="Open chat">
+    <span class="chat-trigger-icon-wrap" aria-hidden="true">
+      <i class="fa-solid fa-comment-dots"></i>
+    </span>
+    <span class="chat-trigger-label">chat me</span>
+  </button>
+
+  <!-- Chat Widget -->
+  <div id="chatWidget" class="chat-widget d-none" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-profile">
+        <img
+          src="assets/img/ppd2.jpg"
+          id="chat_profile_img"
+          alt="PPaul Dequito"
+          class="chat-header-avatar"
+        />
+        <div>
+          <strong data-translate="chat_title">PPaul Dequito</strong>
+          <div class="chat-status-row" data-translate="chat_subtitle">
+            <span class="chat-status-dot" aria-hidden="true"></span>
+            <span>Online</span>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-outline-light close-chat" aria-label="Close chat">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <form id="chatForm" class="chat-footer">
+      <input id="chatInput" type="text" class="form-control" placeholder="Type your message..." autocomplete="off" required />
+      <button class="btn btn-primary" type="submit" data-translate="chat_send">Send</button>
+    </form>
+  </div>
+
+  <div id="viewAllModal" class="modal-backdrop hidden" aria-hidden="true">
+    <div class="modal-container-minimal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header-minimal">
+        <button id="closeModal" class="back-icon-btn" type="button" aria-label="Back">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <div class="modal-title-wrap">
+          <h3 id="modalTitle" class="modal-title-minimal">Section Details</h3>
+        </div>
+      </div>
+      <div id="modalContent" class="modal-content-minimal"></div>
+    </div>
+  </div>
+      
+  <footer class="site-footer">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="site-footer-shell">
+        <div class="site-footer-copy">
+          <p class="site-footer-title">
+            <img
+             src="assets/img/PFZ.png"
+             alt="PPaul Dequito Portfolio Logo"
+             class="site-footer-signature"
+            >
+            PPaul Dequito
+          </p>
+          <p class="site-footer-text mb-0">IT Specialist focused on dependable support, secure operations, and practical business-ready systems.</p>
+        </div>
+
+        <div class="site-footer-meta">
+          <a href="mailto:peterpaul.dequito@gmail.com" class="site-footer-link ">peterpaul.dequito@gmail.com</a>
+          <span class="site-footer-dot" aria-hidden="true"></span>
+          <span class="site-footer-note">Iloilo, Philippines</span>
+        </div>
+
+        <div class="site-footer-bottom">
+          <span class="site-footer-copyright">
+            <i class="fa-regular fa-copyright" aria-hidden="true"></i>
+            <span>2026 PPaul Dequito</span>
+          </span>
+          <span class="site-footer-note">All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+
+
+
+</body>
+</html>
+<script>
+// Theme Toggle
+const themeBtn = document.getElementById('theme-btn');
+const profileImage = document.getElementById('pfz_img');
+const chatProfileImage = document.getElementById('chat_profile_img');
+const profileImageSources = {
+  light: 'assets/img/ppd1.jpg',
+  dark: 'assets/img/ppd2.jpg',
+};
+const chatProfileImageSources = {
+  light: 'assets/img/ppd2.jpg',
+  dark: 'assets/img/ppd1.jpg',
+};
+
+Object.values({ ...profileImageSources, ...chatProfileImageSources }).forEach((src) => {
+  const image = new Image();
+  image.src = src;
+});
+
+function updateProfileImage(theme) {
+  if (!profileImage) return;
+
+  const nextSrc = theme === 'dark' ? profileImageSources.dark : profileImageSources.light;
+  const currentSrc = profileImage.getAttribute('src');
+
+  if (currentSrc === nextSrc) return;
+
+  profileImage.classList.add('is-switching');
+
+  window.setTimeout(() => {
+    profileImage.setAttribute('src', nextSrc);
+  }, 140);
+
+  window.setTimeout(() => {
+    profileImage.classList.remove('is-switching');
+  }, 280);
+}
+
+function updateChatProfileImage(theme) {
+  if (!chatProfileImage) return;
+
+  const nextSrc = theme === 'dark' ? chatProfileImageSources.dark : chatProfileImageSources.light;
+  const currentSrc = chatProfileImage.getAttribute('src');
+
+  if (currentSrc === nextSrc) return;
+
+  chatProfileImage.classList.add('is-switching');
+
+  window.setTimeout(() => {
+    chatProfileImage.setAttribute('src', nextSrc);
+  }, 140);
+
+  window.setTimeout(() => {
+    chatProfileImage.classList.remove('is-switching');
+  }, 280);
+}
+
+function applyTheme(mode) {
+  const html = document.documentElement;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const actual = mode === 'system' ? (prefersDark ? 'dark' : 'light') : mode;
+
+  html.classList.toggle('dark', actual === 'dark');
+  themeBtn.dataset.theme = actual;
+  themeBtn.setAttribute('aria-pressed', actual === 'dark' ? 'true' : 'false');
+  themeBtn.setAttribute('aria-label', actual === 'dark' ? 'Theme: Dark' : 'Theme: Light');
+  updateProfileImage(actual);
+  updateChatProfileImage(actual);
+}
+
+function setTheme(mode) {
+  localStorage.setItem('theme', mode);
+  applyTheme(mode);
+}
+
+function toggleThemeMode() {
+  const stored = localStorage.getItem('theme') || 'system';
+  if (stored === 'dark') {
+    setTheme('light');
+  } else if (stored === 'light') {
+    setTheme('dark');
+  } else {
+    // system currently, switch to explicit dark
+    setTheme('dark');
+  }
+}
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  const stored = localStorage.getItem('theme') || 'system';
+  if (stored === 'system') {
+    applyTheme('system');
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('theme') || 'system';
+  applyTheme(saved);
+});
+</script>

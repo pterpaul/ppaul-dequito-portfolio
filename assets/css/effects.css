@@ -1,0 +1,1371 @@
+/* ============================================
+   STICKY NAVIGATION (Fixed clone managed by JS)
+   ============================================ */
+
+.nav {
+  position: static;
+  z-index: 10;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+#fixed-nav {
+  padding: 0.75rem;
+  display: none;
+}
+
+#fixed-nav .section-nav {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dark #fixed-nav {
+  background: rgba(20, 25, 40, 0.95) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  border-bottom-color: rgba(13, 110, 253, 0.2) !important;
+}
+
+
+/* ============================================
+   GLASS MORPHISM EFFECT
+   ============================================ */
+
+.glass-effect,
+.glass-modal {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease-in-out !important;
+  padding: 30px !important;
+}
+
+.glass-effect:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 193, 7, 0.4) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 40px rgba(255, 193, 7, 0.2) !important;
+}
+
+/* ============================================
+   ABOUT SECTION RESPONSIVE STYLING
+   ============================================ */
+
+.about {
+  padding: 60px 0;
+}
+
+.about .form-row .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.about .row.col {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 60px;
+}
+
+.about-title {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.about-title h2 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.about .form-row:first-child .about-title {
+  margin-bottom: 50px;
+}
+
+.about .col-lg-6 {
+  padding: 20px;
+}
+
+.about .form-group {
+  margin-bottom: 20px;
+}
+
+.txt-about-content {
+  padding: 30px !important;
+  border-radius: 15px;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+}
+
+.img-ppd {
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* ============================================
+   RESUME SECTION ENHANCEMENTS
+   ============================================ */
+
+.resume-card {
+  margin-bottom: 30px;
+  padding: 30px !important;
+}
+
+.resume-card-header {
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 193, 7, 0.2);
+  margin-bottom: 25px;
+}
+
+.resume-card-header h2 {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.resume-card-header svg {
+  width: 32px;
+  height: 32px;
+  color: #ffc107;
+}
+
+.resume-card-body {
+  padding: 0;
+}
+
+.education-item {
+  padding: 20px 0;
+}
+
+.resume-date-badge {
+  display: inline-block;
+  background: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  color: #ffc107;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.experience-item {
+  padding: 20px 0;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.experience-header h5 {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.experience-header .txt_pp {
+  font-size: 0.9rem;
+}
+
+.experience-duration {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.experience-dates {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 15px;
+}
+
+.experience-item p {
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================
+   COMPETENCIES SECTION
+   ============================================ */
+
+.competencies-header {
+  margin-bottom: 0px;
+}
+
+.competencies-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 10%;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.competencies-carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #ffc1072c;
+  flex: 1;
+
+  /* Improve swipe handling on touch devices */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.competencies-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.competencies-carousel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.competencies-carousel::-webkit-scrollbar-thumb {
+  background: #ffc1072c;
+  border-radius: 10px;
+}
+
+.competency-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  cursor: pointer;
+  padding: 25px 20px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 340px;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.competency-card:hover {
+  transform: translateY(-8px);
+}
+
+.competency-card-icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 193, 7, 0.1);
+  border: 2px solid rgba(255, 193, 7, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  margin-bottom: 8px;
+}
+
+.competency-card-icon svg {
+  width: 40px;
+  height: 40px;
+  color: #ffc107;
+}
+
+.competency-card:hover .competency-card-icon {
+  background: rgba(255, 193, 7, 0.2);
+  border-color: rgba(255, 193, 7, 0.5);
+  transform: scale(1.15) rotate(5deg);
+}
+
+.competency-card h5 {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  min-height: 50px;
+  font-weight: 600;
+  color: #ffc107
+}
+
+.competency-card p {
+  font-size: 0.9rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.competency-card .btn {
+  margin-top: auto;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.competency-card .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+}
+
+/* ============================================
+   HOLOGRAPHIC EFFECT
+   ============================================ */
+
+@keyframes holo-shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes holo-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.2), 
+                inset 0 0 20px rgba(255, 193, 7, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 193, 7, 0.4), 
+                inset 0 0 30px rgba(255, 193, 7, 0.2);
+  }
+}
+
+.holographic-effect {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.1), rgba(255, 193, 7, 0.1)) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 193, 7, 0.3) !important;
+  border-radius: 15px !important;
+  overflow: hidden;
+  animation: holo-glow 3s ease-in-out infinite !important;
+  padding: 30px !important;
+}
+
+.holographic-effect::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: holo-shimmer 3s infinite;
+  pointer-events: none;
+}
+
+.holographic-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(255, 193, 7, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.holographic-effect:hover {
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.15), rgba(255, 193, 7, 0.15)) !important;
+  border-color: rgba(255, 193, 7, 0.5) !important;
+  transform: translateY(-5px) scale(1.02) !important;
+}
+
+/* ============================================
+   GLASS HOLOGRAM HYBRID EFFECT
+   ============================================ */
+
+.glass-hologram-effect {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 193, 7, 0.25) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 0 20px rgba(255, 193, 7, 0.05);
+}
+
+.glass-hologram-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.2), transparent);
+  animation: shine-effect 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine-effect {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.glass-hologram-effect:hover {
+  transform: translateY(-8px) translateZ(0);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)) !important;
+  border-color: rgba(255, 193, 7, 0.4) !important;
+  box-shadow: 
+    0 15px 50px rgba(255, 193, 7, 0.15),
+    inset 0 0 30px rgba(255, 193, 7, 0.1);
+}
+
+/* ============================================
+   PROJECTS SECTION
+   ============================================ */
+
+.projects {
+  padding: 80px 0 !important;
+}
+
+.projects-title {
+  margin-bottom: 50px;
+}
+
+.projects-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 30px 60px;
+}
+
+.projects-carousel {
+  display: flex;
+  gap: 25px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #07acff rgba(255, 255, 255, 0.1);
+
+  /* Improve swipe handling on touch devices */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.projects-carousel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.projects-carousel::-webkit-scrollbar-thumb {
+  background: #077fff;
+  border-radius: 10px;
+}
+
+.project-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  cursor: pointer;
+  padding: 15px;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-image-wrapper:hover .project-image {
+  transform: scale(1.1);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-info h5 {
+  color: #ffc107;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.project-info p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.project-tags .badge {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  font-weight: 600;
+}
+
+/* Carousel Controls */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  /* border: 2px solid #ffc107; */
+  /* border: 2px solid #0a0a0a; */
+  border-radius: 50%;
+  background: rgba(255, 193, 7, 0.1);
+  backdrop-filter: blur(10px);
+  color: #0a0a0a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  z-index: 10;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  padding: 0;
+}
+
+.carousel-control:hover {
+  background: rgba(255, 193, 7, 0.093);
+  /* border: 2px solid #fff;
+  color: #fff; #201900; */
+  color: #886d00;
+  font-weight: 100;
+  transform: translateY(-50%) scale(1.15);
+  /* box-shadow: 0 0 20px rgba(255, 193, 7, 0.5); */
+}
+
+.carousel-control:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+/* ============================================
+   MODAL CUSTOMIZATION
+   ============================================ */
+
+.modal-dialog {
+  max-width: 900px;
+}
+
+.glass-modal .modal-content {
+  background: rgba(30, 30, 30, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 193, 7, 0.3) !important;
+}
+
+.glass-modal .modal-header {
+  border-bottom-color: rgba(255, 193, 7, 0.3) !important;
+  padding: 20px 25px !important;
+}
+
+.glass-modal .modal-footer {
+  border-top-color: rgba(255, 193, 7, 0.3) !important;
+  padding: 15px 25px !important;
+}
+
+.glass-modal .modal-body {
+  padding: 25px !important;
+}
+
+.btn-close-white {
+  filter: brightness(0) invert(1);
+}
+
+.project-modal-content,
+.competency-modal-content {
+  color: #fff;
+}
+
+.project-modal-description,
+.competency-modal-description {
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.project-modal-details ul,
+.competency-modal-skills ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-modal-details li,
+.competency-modal-skills li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 193, 7, 0.1);
+  margin-left: 0;
+}
+
+.project-modal-details li:last-child,
+.competency-modal-skills li:last-child {
+  border-bottom: none;
+}
+
+.competency-modal-skills li::before {
+  content: '✓ ';
+  color: #ffc107;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.experience-progress .progress {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   RESPONSIVE PADDING & MARGINS
+   ============================================ */
+
+/* Desktop - 60px padding */
+.row.mx-auto[style*="padding: 0 60px"] {
+  padding: 0 60px !important;
+  max-width: 100%;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Responsive inline padding override */
+  .row.mx-auto[style*="padding: 0 60px"],
+  .row.col[style*="padding: 0 60px"] {
+    padding: 0 40px !important;
+  }
+
+  .about .col-lg-6 {
+    padding: 15px;
+  }
+
+  .about-title h2 {
+    font-size: 2rem;
+  }
+
+  .txt-about-content {
+    padding: 20px !important;
+    min-height: 240px;
+  }
+
+  .txt-about p {
+    font-size: 0.95rem;
+  }
+
+  /* Resume & Cards */
+  .resume-card {
+    padding: 20px !important;
+    margin-bottom: 20px;
+  }
+
+  .resume-date-badge {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .experience-duration {
+    justify-content: flex-start;
+  }
+
+  .competency-card {
+    flex: 0 0 220px;
+    min-height: 300px;
+    padding: 15px 10px !important;
+  }
+
+  .competencies-carousel-container {
+    padding: 20px 50px;
+    gap: 15px 0px;
+  }
+
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .carousel-control.prev {
+    left: 5px;
+  }
+
+  .carousel-control.next {
+    right: 5px;
+  }
+
+  .project-card {
+    flex: 0 0 240px;
+    min-height: 320px;
+  }
+
+  .projects-carousel-container {
+    padding: 20px 50px;
+  }
+
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .projects-carousel,
+  .competencies-carousel {
+    gap: 15px;
+  }
+
+  .glass-effect,
+  .glass-modal,
+  .holographic-effect {
+    padding: 20px !important;
+  }
+
+  .resume-card-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Responsive inline padding override for mobile */
+  .row.mx-auto[style*="padding: 0 60px"],
+  .row.col[style*="padding: 0 60px"] {
+    padding: 0 20px !important;
+  }
+
+  /* About Section Mobile */
+  .about .row.col {
+    padding: 0 20px;
+  }
+
+  .about .col-lg-6 {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .about-title h2 {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .txt-about-content {
+    padding: 15px !important;
+    min-height: auto;
+    margin-top: 20px;
+  }
+
+  .txt-about p {
+    font-size: 0.9rem;
+  }
+
+  .txt-about-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .img-ppd {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Resume & Cards Mobile */
+  .resume-card {
+    padding: 15px !important;
+    margin-bottom: 15px;
+  }
+
+  .resume-card-body {
+    font-size: 0.9rem;
+  }
+
+  .competency-card {
+    flex: 0 0 160px;
+    min-height: 260px;
+    padding: 12px 8px !important;
+  }
+
+  .competencies-carousel-container {
+    padding: 15px 35px;
+  }
+
+  .competency-card-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .competency-card-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .competency-card h5 {
+    font-size: 0.9rem;
+  }
+
+  .competency-card p {
+    font-size: 0.8rem;
+  }
+
+  .carousel-control {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .carousel-control.prev {
+    left: 3px;
+  }
+
+  .carousel-control.next {
+    right: 3px;
+  }
+
+  .project-card {
+    flex: 0 0 200px;
+    min-height: 280px;
+  }
+
+  .projects-carousel-container {
+    padding: 15px 40px;
+  }
+
+  .carousel-control {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .carousel-control.prev {
+    left: -5px;
+  }
+
+  .carousel-control.next {
+    right: -5px;
+  }
+
+  .modal-dialog {
+    margin: 10px;
+  }
+
+  .modal-lg {
+    max-width: 95%;
+  }
+
+  .modal-body {
+    padding: 15px !important;
+  }
+
+  .glass-effect,
+  .glass-modal,
+  .holographic-effect {
+    padding: 15px !important;
+  }
+
+  .resume-card-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .resume-card-header {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+
+  .experience-item {
+    padding: 12px 0;
+  }
+
+  .experience-item.border-top {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+}
+
+/* ============================================
+   SCROLL ANIMATION FOR NEW ELEMENTS
+   ============================================ */
+
+.glass-effect,
+.holographic-effect,
+.glass-hologram-effect {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.glass-effect.scrolled,
+.holographic-effect.scrolled,
+.glass-hologram-effect.scrolled {
+  animation: fadeInUp 0.6s ease-out;
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+.ms-2 {
+  margin-left: 0.5rem;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 2rem !important;
+}
+
+.mt-2 {
+  margin-top: 0.5rem !important;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mt-5 {
+  margin-top: 2rem !important;
+}
+
+.pt-4 {
+  padding-top: 1.5rem !important;
+}
+
+.ps-3 {
+  padding-left: 1rem !important;
+}
+
+.gap-20 {
+  gap: 20px;
+}
+
+.border-opacity-25 {
+  opacity: 0.25;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.text-dark {
+  color: #212529 !important;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f18 {
+  font-size: 18px;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.f24 {
+  font-size: 24px;
+}
+
+.f26 {
+  font-size: 26px;
+}
+
+.f-1 {
+  font-weight: 700;
+}
+
+.f-2 {
+  font-weight: 400;
+}
+
+/* ============================================
+   DARK MODE COMPATIBILITY
+   ============================================ */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --holo-primary: rgba(255, 193, 7, 0.3);
+  --holo-secondary: rgba(30, 144, 255, 0.1);
+  --accent-color: #ffc107;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   HOLOGRAPHIC EFFECT
+   ============================================ */
+
+@keyframes holo-shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes holo-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.2), 
+                inset 0 0 20px rgba(255, 193, 7, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(77, 7, 255, 0.4), 
+                inset 0 0 30px rgba(7, 40, 255, 0.2);
+  }
+}
+
+.holographic-effect {
+  position: relative;
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.1), rgba(255, 193, 7, 0.1)) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(7, 106, 255, 0.3) !important;
+  border-radius: 15px !important;
+  overflow: hidden;
+  animation: holo-glow 3s ease-in-out infinite !important;
+}
+
+.holographic-effect::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: holo-shimmer 3s infinite;
+  pointer-events: none;
+}
+
+.holographic-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(255, 193, 7, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.holographic-effect:hover {
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.15), rgba(61, 7, 255, 0.15)) !important;
+  border-color: rgba(110, 7, 255, 0.5) !important;
+  transform: translateY(-5px) scale(1.02) !important;
+}
+
+/* ============================================
+   GLASS HOLOGRAM HYBRID EFFECT
+   ============================================ */
+
+.glass-hologram-effect {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)) !important;
+  backdrop-filter: blur(15px) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  border: 1px solid rgba(255, 193, 7, 0.25) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  box-shadow: 
+    0 8px 32px rgba(106, 7, 255, 0.15),
+    inset 0 0 20px rgba(102, 7, 255, 0.1);
+}
+
+.glass-hologram-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(106, 7, 255, 0.2), transparent);
+  animation: shine-effect 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shine-effect {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+.glass-hologram-effect:hover {
+  transform: translateY(-8px) translateZ(0);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04)) !important;
+  border-color: rgba(23, 7, 255, 0.4) !important;
+  box-shadow: 
+    0 15px 50px rgba(106, 7, 255, 0.15),
+    inset 0 0 30px rgba(102, 7, 255, 0.1);
+}
+
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .project-card {
+    flex: 0 0 240px;
+    min-height: 320px;
+  }
+
+  .projects-carousel-container {
+    padding: 20px 50px;
+  }
+
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .projects-carousel {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    flex: 0 0 200px;
+    min-height: 280px;
+  }
+
+  .projects-carousel-container {
+    padding: 15px 40px;
+  }
+
+  .carousel-control {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .carousel-control.prev {
+    left: -5px;
+  }
+
+  .carousel-control.next {
+    right: -5px;
+  }
+
+  .modal-dialog {
+    margin: 10px;
+  }
+
+  .modal-lg {
+    max-width: 95%;
+  }
+}
+
+/* ============================================
+   SCROLL ANIMATION FOR NEW ELEMENTS
+   ============================================ */
+
+.glass-effect,
+.holographic-effect,
+.glass-hologram-effect {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.glass-effect.scrolled,
+.holographic-effect.scrolled,
+.glass-hologram-effect.scrolled {
+  animation: fadeInUp 0.6s ease-out;
+  opacity: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   ADDITIONAL UTILITY CLASSES
+   ============================================ */
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.text-dark {
+  color: #212529 !important;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.f18 {
+  font-size: 18px;
+}
+
+.f20 {
+  font-size: 20px;
+}
+
+.f24 {
+  font-size: 24px;
+}
+
+.f26 {
+  font-size: 26px;
+}
+
+.f-1 {
+  font-weight: 700;
+}
+
+.f-2 {
+  font-weight: 400;
+}
+
+.txt_pp {
+  color: #ffc107 !important;
+  font-weight: 600;
+}
+
+.txt_pb {
+  color: #0a0a0a !important;
+  font-weight: 400;
+}
+
+/* ============================================
+   DARK MODE COMPATIBILITY
+   ============================================ */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --holo-primary: rgba(255, 193, 7, 0.3);
+  --holo-secondary: rgba(30, 144, 255, 0.1);
+  --accent-color: #ffc107;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+}
