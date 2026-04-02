@@ -24,17 +24,8 @@ This portfolio includes:
 - custom portfolio chatbot
 - light and dark mode support
 
-If you publish this repository publicly later, you can also add:
-
-- live demo link
-- homepage screenshot
-- walkthrough GIF
-
-Example:
-
 ```md
 Live Demo: www.ppauldequito.com
-Preview Image: assets/img/preview.png
 ```
 
 ## Overview
