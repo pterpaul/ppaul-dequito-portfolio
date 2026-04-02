@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PPaul Dequito Portfolio
 
 A personal portfolio website built to present my professional background in IT support, systems administration, cybersecurity, infrastructure operations, and practical business-ready development.
@@ -157,3 +158,7 @@ IT Specialist | Cybersecurity Analyst
 ## License
 
 This project is intended for personal portfolio, presentation, and professional showcase purposes.
+=======
+# ppaul-dequito-portfolio
+PPaul Dequito - Portfolio (Personal Website)
+>>>>>>> 301e29a4d9ec710d6158533c0fb3befb9db6f98f
