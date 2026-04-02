@@ -947,10 +947,10 @@ function initModalHandlers() {
           period: '2016 - 2020',
           summary: [
             'Built a formal foundation in information technology covering software, systems, networking, and practical technical problem-solving.',
-            'Developed academic and hands-on exposure that supported later growth in IT operations, infrastructure support, and cybersecurity-oriented work.',
+            'Developed academic and hands-on exposure thru I.T. basics and fundamentals.',
           ],
           awards: [
-            'Top 100 Influential Student Achievers',
+            'Top 1000 Influential Student Achievers',
             'ISAT U Youth Skills Web Development - Champion, 1st Place (2019)',
             'ISAT U Youth Skills Programming - Champion, 1st Place (2019)',
             'BPI Resilient Youth Hackathon - Champion, 2nd Place (2019)',
