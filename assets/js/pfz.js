@@ -875,7 +875,7 @@ function initModalHandlers() {
           ],
           accomplishments: [
             'Supported 150+ users across multiple branches while keeping daily IT operations stable and uninterrupted.',
-            'Managed 50+ network devices, including Fortinet and Sophos environments, with 99% uptime.',
+            'Managed 90+ network devices, including Fortinet and Sophos environments, with 99% uptime.',
             'Administered Office 365, SharePoint, Synology NAS, and SAP ERP to improve collaboration and workflow efficiency.',
             'Implemented backup and disaster recovery procedures, standardized license tracking, and reinforced IT policies.',
             'Monitored networks and endpoints to reduce cybersecurity risks and strengthen operational stability.',
@@ -2001,66 +2001,118 @@ function initModalHandlers() {
 
   function renderProjectsContent(section) {
     const projects = section.items || [];
+    const renderProjectCard = (project) => `
+      <article class="projects-showcase-card" id="${project.id || ''}">
+        <div class="projects-showcase-copy">
+          <div>
+            <div class="projects-showcase-kicker">
+              <span class="projects-showcase-badge">
+                <i class="${project.icon || 'fa-solid fa-layer-group'}" aria-hidden="true"></i>
+                ${project.category || 'System Build'}
+              </span>
+              <span class="projects-showcase-metric">${project.metric || ''}</span>
+            </div>
+            <h3 class="projects-showcase-title">${project.title}</h3>
+            <p class="projects-showcase-summary">${project.summary}</p>
+          </div>
+
+          <div class="projects-showcase-meta">
+            <p class="projects-showcase-impact">${project.impact}</p>
+            <p class="projects-showcase-metric-label">${project.metricLabel || ''}</p>
+            <div class="projects-showcase-detail-grid">
+              <div class="projects-showcase-detail-card">
+                <span class="projects-showcase-detail-label">Status</span>
+                <strong>${project.status || 'Portfolio Build'}</strong>
+              </div>
+              <div class="projects-showcase-detail-card">
+                <span class="projects-showcase-detail-label">Role</span>
+                <strong>${project.role || 'Developer'}</strong>
+              </div>
+              <div class="projects-showcase-detail-card">
+                <span class="projects-showcase-detail-label">Platform</span>
+                <strong>${project.platform || 'Web App'}</strong>
+              </div>
+              <div class="projects-showcase-detail-card">
+                <span class="projects-showcase-detail-label">Delivery</span>
+                <strong>${project.delivery || 'End-to-end'}</strong>
+              </div>
+            </div>
+            <div class="projects-showcase-feature-list">
+              ${(project.features || []).map((feature) => `
+                <span class="projects-showcase-feature">
+                  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                  ${feature}
+                </span>
+              `).join('')}
+            </div>
+            <div class="projects-showcase-tags">
+              ${(project.stack || []).map((tag) => `<span class="projects-showcase-tag">${tag}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="projects-showcase-visual">
+          ${renderProjectPreview(project)}
+        </div>
+      </article>
+    `;
 
     return `
-      <section class="projects-showcase-grid">
-        ${projects.map((project) => `
-          <article class="projects-showcase-card" id="${project.id || ''}">
-            <div class="projects-showcase-copy">
-              <div>
-                <div class="projects-showcase-kicker">
-                  <span class="projects-showcase-badge">
-                    <i class="${project.icon || 'fa-solid fa-layer-group'}" aria-hidden="true"></i>
-                    ${project.category || 'System Build'}
-                  </span>
-                  <span class="projects-showcase-metric">${project.metric || ''}</span>
-                </div>
-                <h3 class="projects-showcase-title">${project.title}</h3>
-                <p class="projects-showcase-summary">${project.summary}</p>
+      <section class="projects-showcase-grid projects-showcase-grid-desktop">
+        ${projects.map((project) => renderProjectCard(project)).join('')}
+      </section>
+      <section class="projects-showcase-swiper-shell">
+        <div class="swiper projectsShowcaseSwiper">
+          <div class="swiper-wrapper">
+            ${projects.map((project) => `
+              <div class="swiper-slide">
+                ${renderProjectCard(project)}
               </div>
-
-              <div class="projects-showcase-meta">
-                <p class="projects-showcase-impact">${project.impact}</p>
-                <p class="projects-showcase-metric-label">${project.metricLabel || ''}</p>
-                <div class="projects-showcase-detail-grid">
-                  <div class="projects-showcase-detail-card">
-                    <span class="projects-showcase-detail-label">Status</span>
-                    <strong>${project.status || 'Portfolio Build'}</strong>
-                  </div>
-                  <div class="projects-showcase-detail-card">
-                    <span class="projects-showcase-detail-label">Role</span>
-                    <strong>${project.role || 'Developer'}</strong>
-                  </div>
-                  <div class="projects-showcase-detail-card">
-                    <span class="projects-showcase-detail-label">Platform</span>
-                    <strong>${project.platform || 'Web App'}</strong>
-                  </div>
-                  <div class="projects-showcase-detail-card">
-                    <span class="projects-showcase-detail-label">Delivery</span>
-                    <strong>${project.delivery || 'End-to-end'}</strong>
-                  </div>
-                </div>
-                <div class="projects-showcase-feature-list">
-                  ${(project.features || []).map((feature) => `
-                    <span class="projects-showcase-feature">
-                      <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                      ${feature}
-                    </span>
-                  `).join('')}
-                </div>
-                <div class="projects-showcase-tags">
-                  ${(project.stack || []).map((tag) => `<span class="projects-showcase-tag">${tag}</span>`).join('')}
-                </div>
-              </div>
-            </div>
-
-            <div class="projects-showcase-visual">
-              ${renderProjectPreview(project)}
-            </div>
-          </article>
-        `).join('')}
+            `).join('')}
+          </div>
+          <div class="swiper-pagination projects-showcase-pagination"></div>
+        </div>
       </section>
     `;
+  }
+
+  let projectsShowcaseSwiper = null;
+
+  function initProjectsShowcaseSwiper() {
+    if (typeof Swiper === 'undefined') return;
+
+    if (projectsShowcaseSwiper) {
+      projectsShowcaseSwiper.destroy(true, true);
+      projectsShowcaseSwiper = null;
+    }
+
+    const showcaseSwiperEl = document.querySelector('.projectsShowcaseSwiper');
+    if (!showcaseSwiperEl) return;
+
+    projectsShowcaseSwiper = new Swiper('.projectsShowcaseSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      speed: 700,
+      loop: true,
+      grabCursor: true,
+      autoHeight: true,
+      centeredSlides: true,
+      pagination: {
+        el: '.projects-showcase-pagination',
+        clickable: true,
+        dynamicBullets: true,
+        dynamicMainBullets: 3,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1.08,
+          centeredSlides: false,
+        },
+        768: {
+          enabled: false,
+        },
+      },
+    });
   }
 
   function initModalReviewSwiper() {
@@ -2442,6 +2494,7 @@ function initModalHandlers() {
 
     if (projectsDetails) {
       projectsDetails.innerHTML = renderProjectsContent(modalSections.projects);
+      initProjectsShowcaseSwiper();
     }
   }
 

@@ -3155,6 +3155,19 @@ html.dark .project-card::after {
   gap: 0.8rem;
 }
 
+.projects-showcase-swiper-shell {
+  display: none;
+}
+
+.projectsShowcaseSwiper {
+  overflow: visible;
+  padding-bottom: 2rem;
+}
+
+.projectsShowcaseSwiper .swiper-slide {
+  height: auto;
+}
+
 .projects-showcase-card {
   display: grid;
   gap: 0.85rem;
@@ -3326,13 +3339,39 @@ html.dark .project-preview-mapline {
 }
 
 @media (max-width: 639px) {
+  .projects-showcase-grid-desktop {
+    display: none;
+  }
+
+  .projects-showcase-swiper-shell {
+    display: block;
+  }
+
+  .projectsShowcaseSwiper .swiper-slide {
+    padding-right: 0.1rem;
+  }
+
   .project-card {
     min-height: auto;
     padding: 1rem 0.9rem 0.9rem;
   }
 
+  .projects-showcase-card {
+    padding: 0.95rem;
+  }
+
   .project-preview-shell {
     min-height: 136px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .projects-showcase-grid-desktop {
+    display: none;
+  }
+
+  .projects-showcase-swiper-shell {
+    display: block;
   }
 }
 
