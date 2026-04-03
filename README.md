@@ -151,7 +151,3 @@ This project is intended for personal portfolio, presentation, and professional 
 
 # ppaul-dequito-portfolio
 PPaul Dequito - Portfolio (Personal Website)
-<<<<<<< HEAD
-=======
-
->>>>>>> a2478c5 (Update portfolio content)
