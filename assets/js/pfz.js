@@ -881,6 +881,7 @@ function initModalHandlers() {
             'Monitored networks and endpoints to reduce cybersecurity risks and strengthen operational stability.',
             'Guided IT teams, provided mentoring, and optimized workflows across multiple branches.',
             'Performed daily IT operations and routine technical task assignments consistently.',
+            'Developed and deployed PFZ Asset Inventory Management System, improving asset tracking and operational efficiency across branches.',
           ],
         },
         {
@@ -1047,141 +1048,247 @@ function initModalHandlers() {
     },
     projects: {
       title: 'Projects',
-      subtitle: 'Selected builds across transparency systems, inventory workflows, security operations, web presence, and logistics tracking.',
+      subtitle: 'Selected project previews presented as public-safe case studies. Detailed workflows and internal logic are intentionally kept private.',
       items: [
         {
-          id: 'project-lgu-mts',
-          title: 'LGU Municipality Transparency System (MTS)',
-          category: 'GovTech Platform',
-          icon: 'fa-solid fa-landmark',
-          summary: 'A publishing and transparency system for municipality offices and barangays with structured posting, announcements, and local content management. With enhanced AI integration through a centralized social media: Facebook page and LGU website.',
-          impact: 'Multi-level publishing and announcement management',
-          metric: '30 modules',
-          metricLabel: 'Publishing and admin views',
-          status: 'Production-ready prototype',
-          role: 'Full-stack Developer',
-          platform: 'Web CMS',
-          delivery: 'Admin + Barangay Portals',
-          features: ['Barangay posting flow', 'Emergency bulletin cards', 'Role-based approvals'],
-          stack: ['PHP', 'MySQL', 'Bootstrap', 'CMS'],
-          preview: 'transparency',
-        },
-        {
-          id: 'project-inventory-system',
-          title: 'Inventory Management System',
-          category: 'Operations Dashboard',
-          icon: 'fa-solid fa-boxes-stacked',
-          summary: 'A stock, procurement, and asset workflow platform built for clearer monitoring, branch-level control, and faster reporting.',
-          impact: 'Real-time stock monitoring and procurement visibility',
-          metric: 'Live stocks',
-          metricLabel: 'Procurement and inventory tracking',
-          status: 'Internal business system',
-          role: 'System Developer',
-          platform: 'Web Dashboard',
-          delivery: 'Inventory + Procurement',
-          features: ['Stock movement panels', 'Procurement queue', 'Branch report exports'],
-          stack: ['PHP', 'MySQL', 'Dashboard', 'Reports'],
-          preview: 'inventory',
-        },
-        {
           id: 'project-edr',
-          title: 'Advanced Endpoint Defense (EDR)',
+          title: 'Advance Endpoint Defense',
           category: 'Security Operations',
           icon: 'fa-solid fa-shield-halved',
-          summary: 'An endpoint defense rollout focused on threat visibility, device isolation, and stronger workstation protection across operations.',
-          impact: 'Threat isolation and stronger endpoint posture',
+          summary: 'A security-focused build centered on endpoint visibility, response support, and stronger protection posture without exposing operational controls.',
+          impact: 'Improved endpoint posture and security readiness',
           metric: '24/7 watch',
-          metricLabel: 'Alerting and containment posture',
-          status: 'Security rollout',
+          metricLabel: 'Monitoring and response coverage',
+          status: 'Public summary available',
           role: 'IT Operations / Security Support',
-          platform: 'Endpoint Defense',
-          delivery: 'Policy + Monitoring',
-          features: ['Threat telemetry', 'Isolation controls', 'Protection policy views'],
+          platform: 'Security Platform',
+          delivery: 'Featured case study',
+          features: ['Threat visibility', 'Response support', 'Protection oversight'],
           stack: ['Sophos', 'EDR', 'Threat Monitoring', 'Security Ops'],
           preview: 'security',
+          featured: true,
         },
         {
-          id: 'project-company-profile',
-          title: 'Company Customizable Profile Website',
-          category: 'Frontend Experience',
-          icon: 'fa-solid fa-window-maximize',
-          summary: 'A flexible company web presence with editable sections, responsive layouts, and a cleaner business-facing presentation layer.',
-          impact: 'Flexible branding and maintainable web presence',
-          metric: 'UI-ready',
-          metricLabel: 'Modular content blocks',
-          status: 'Client-facing website',
+          id: 'project-monitoring',
+          title: 'Network & System Monitoring',
+          category: 'Infrastructure Monitoring',
+          icon: 'fa-solid fa-chart-line',
+          summary: 'A monitoring-focused setup for infrastructure visibility, service tracking, and issue awareness presented as an overview rather than a technical blueprint.',
+          impact: 'Faster visibility into system health and alerts',
+          metric: 'Live health',
+          metricLabel: 'Infrastructure and service awareness',
+          status: 'Public summary available',
+          role: 'IT Operations / Monitoring Support',
+          platform: 'Monitoring Dashboard',
+          delivery: 'Featured case study',
+          features: ['Health visibility', 'Alert awareness', 'Operational monitoring'],
+          stack: ['Zabbix', 'SolarWinds', 'Dashboards', 'Infrastructure'],
+          preview: 'inventory',
+          featured: true,
+        },
+        {
+          id: 'project-pfz-asset',
+          title: 'PFZ Asset Inventory Management',
+          category: 'Operations System',
+          icon: 'fa-solid fa-box-archive',
+          summary: 'Asset tracking and inventory visibility for internal operational use.',
+          impact: 'Better asset visibility and record tracking',
+          status: 'Project archive',
+          role: 'System Developer',
+          platform: 'Web App',
+          delivery: 'Project archive',
+          stack: ['PHP', 'MySQL', 'Inventory', 'Reports'],
+        },
+        {
+          id: 'project-pfz-payroll',
+          title: 'PFZ Payroll',
+          category: 'Business Operations',
+          icon: 'fa-solid fa-money-check-dollar',
+          summary: 'Payroll-related workflow support designed for internal business operations.',
+          impact: 'Streamlined payroll processing support',
+          status: 'Project archive',
+          role: 'System Developer',
+          platform: 'Business System',
+          delivery: 'Project archive',
+          stack: ['Web App', 'Admin Workflow', 'Operations'],
+        },
+        {
+          id: 'project-pfz-delivery',
+          title: 'PFZ Delivery App',
+          category: 'Logistics App',
+          icon: 'fa-solid fa-truck',
+          summary: 'Delivery-focused application supporting tracking and operational coordination.',
+          impact: 'Improved delivery process visibility',
+          status: 'Project archive',
+          role: 'System Developer',
+          platform: 'Mobile / Web',
+          delivery: 'Project archive',
+          stack: ['Mobile App', 'Logs', 'Operations'],
+        },
+        {
+          id: 'project-pfz-sfa',
+          title: 'PFZ SFA Booking App',
+          category: 'Sales Workflow',
+          icon: 'fa-solid fa-calendar-check',
+          summary: 'Booking and field-activity workflow support for sales-force operations.',
+          impact: 'Clearer booking and field coordination',
+          status: 'Project archive',
+          role: 'System Developer',
+          platform: 'Mobile / Web',
+          delivery: 'Project archive',
+          stack: ['Booking', 'Operations', 'Mobile Workflow'],
+        },
+        {
+          id: 'project-pfz-combined',
+          title: 'PFZ Delivery x SFA Booking App',
+          category: 'Logistics Workflow',
+          icon: 'fa-solid fa-truck-fast',
+          summary: 'A combined operations workflow connecting booking, assignment, and delivery tracking into a single public-safe showcase of logistics coordination.',
+          impact: 'Improved coordination from booking to delivery',
+          metric: 'Route flow',
+          metricLabel: 'Booking-to-delivery visibility',
+          status: 'Public summary available',
+          role: 'System Developer',
+          platform: 'Web + Mobile Workflow',
+          delivery: 'Featured case study',
+          features: ['Booking coordination', 'Delivery tracking', 'Operations visibility'],
+          stack: ['JavaScript', 'Mobile Workflow', 'Logs', 'Operations'],
+          preview: 'logistics',
+          featured: true,
+        },
+        {
+          id: 'project-pfz-saas',
+          title: 'PFZ SaaS',
+          category: 'Product Concept',
+          icon: 'fa-solid fa-cloud',
+          summary: 'A software-as-a-service concept focused on reusable business workflow delivery.',
+          impact: 'Scalable product direction for digital services',
+          status: 'Project archive',
+          role: 'Product / System Developer',
+          platform: 'SaaS Platform',
+          delivery: 'Project archive',
+          stack: ['Web App', 'Multi-tenant Concept', 'Product Workflow'],
+        },
+        {
+          id: 'project-company-website',
+          title: 'Company Website (Customize)',
+          category: 'Web Presence',
+          icon: 'fa-solid fa-globe',
+          summary: 'Customizable website build for business presentation and content management.',
+          impact: 'Cleaner digital brand presence',
+          status: 'Project archive',
           role: 'Frontend Developer',
           platform: 'Responsive Web',
-          delivery: 'Brand + Landing Pages',
-          features: ['Editable landing sections', 'Responsive page flow', 'Brand-driven layout system'],
-          stack: ['React', 'Tailwind CSS', 'Bootstrap', 'Responsive UI'],
-          preview: 'website',
+          delivery: 'Project archive',
+          stack: ['HTML', 'CSS', 'JavaScript', 'Responsive UI'],
         },
         {
-          id: 'project-pfz-logistics',
-          title: 'PFZ Delivery & Logistics Management System',
-          category: 'Logistics Platform',
-          icon: 'fa-solid fa-truck-fast',
-          summary: 'A delivery operations system that combines booking, assignment, geotagging, and traceability into one workflow view.',
-          impact: 'Delivery transparency and activity tracking',
-          metric: 'Route logs',
-          metricLabel: 'Booking to delivery visibility',
-          status: 'Operations platform',
-          role: 'System Developer',
-          platform: 'Logistics Dashboard',
-          delivery: 'Booking + Geotagging',
-          features: ['Booking coordination', 'Driver activity logs', 'Geotagged delivery flow'],
-          stack: ['JavaScript', 'Geotagging', 'Logs', 'Operations'],
-          preview: 'logistics',
+          id: 'project-company-portfolio',
+          title: 'Company Portfolio (Customize)',
+          category: 'Brand Presentation',
+          icon: 'fa-solid fa-briefcase',
+          summary: 'Customizable company portfolio format for showcasing services and capabilities.',
+          impact: 'More flexible presentation for business identity',
+          status: 'Project archive',
+          role: 'Frontend Developer',
+          platform: 'Responsive Web',
+          delivery: 'Project archive',
+          stack: ['HTML', 'CSS', 'JavaScript'],
         },
         {
-          id: 'project-registrar-inventory',
-          title: 'Registrar Inventory Management System',
-          category: 'Academic Operations',
-          icon: 'fa-solid fa-user-graduate',
-          summary: 'A registrar-focused system with AI dashboards, student grade transparency with account limitations, faster encoder workflows, sister-module access, and confidentiality controls for restricted files.',
-          impact: 'Academic transparency with controlled access and faster registrar operations',
-          metric: 'Registrar-ready',
-          metricLabel: 'Student records and admin workflows',
-          status: 'Academic admin system',
-          role: 'System Developer',
-          platform: 'Web Dashboard',
-          delivery: 'Registrar + Sister Modules',
-          features: ['Grade transparency with user limitations', 'Fast-paced registrar encoding', 'Confidential file authorization controls'],
-          stack: ['PHP', 'MySQL', 'AI Dashboards', 'Admin Workflow'],
-          preview: 'registrar',
+          id: 'project-resume-builder',
+          title: 'Resume Builder',
+          category: 'Productivity Tool',
+          icon: 'fa-solid fa-file-lines',
+          summary: 'A resume-generation tool built to simplify personal document creation and presentation.',
+          impact: 'Faster resume preparation workflow',
+          status: 'Project archive',
+          role: 'Frontend / System Developer',
+          platform: 'Web App',
+          delivery: 'Project archive',
+          stack: ['Forms', 'Templates', 'Web App'],
+        },
+        {
+          id: 'project-lgu-mts',
+          title: 'LGU Municipality Transparency',
+          category: 'GovTech Platform',
+          icon: 'fa-solid fa-landmark',
+          summary: 'A structured public information platform for announcements and municipality content designed to highlight impact without revealing internal implementation.',
+          impact: 'Improved publishing consistency and public information access',
+          metric: '30 modules',
+          metricLabel: 'Service and admin touchpoints',
+          status: 'Public summary available',
+          role: 'Full-stack Developer',
+          platform: 'Web CMS',
+          delivery: 'Featured case study',
+          features: ['Structured publishing', 'Announcement visibility', 'Role-aware access'],
+          stack: ['PHP', 'MySQL', 'Bootstrap', 'CMS'],
+          preview: 'transparency',
+          featured: true,
         },
         {
           id: 'project-thesis-inventory',
-          title: 'Thesis Inventory System',
+          title: 'Thesis/Research Archiving Management',
           category: 'Research Archive',
           icon: 'fa-solid fa-book-open-reader',
-          summary: 'A thesis archiving platform designed to reduce hardbound printing costs, support electronic defense-ready copies, and improve retrieval through AI dashboards and search filtering.',
-          impact: 'Lower document cost and easier academic archive access',
+          summary: 'A digital archive concept for thesis storage and retrieval designed to reduce paper-heavy workflows and improve search accessibility through a cleaner academic system.',
+          impact: 'Lower document friction and easier archive access',
           metric: 'Paperless flow',
-          metricLabel: 'Defense-ready digital document archive',
-          status: 'Academic archive platform',
+          metricLabel: 'Digital archive direction',
+          status: 'Public summary available',
           role: 'System Developer',
           platform: 'Web System',
-          delivery: 'Archive + Search + Access',
-          features: ['Thesis project archiving', 'Reduced printing and defense copy costs', 'AI dashboards with search filtering'],
+          delivery: 'Featured case study',
+          features: ['Digital thesis archiving', 'Lower printing dependency', 'Search-focused retrieval experience'],
           stack: ['Archive System', 'AI Search', 'Document Workflow', 'Web App'],
           preview: 'website',
+          featured: true,
+        },
+        {
+          id: 'project-registrar-inventory',
+          title: 'Registrar Inventory Management',
+          category: 'Academic Operations',
+          icon: 'fa-solid fa-user-graduate',
+          summary: 'A registrar-facing platform focused on controlled academic access, faster records support, and institutional workflow efficiency without exposing internal rules.',
+          impact: 'Faster registrar processing with controlled access',
+          metric: 'Registrar-ready',
+          metricLabel: 'Records and workflow coverage',
+          status: 'Public summary available',
+          role: 'System Developer',
+          platform: 'Web Dashboard',
+          delivery: 'Featured case study',
+          features: ['Controlled records visibility', 'Faster encoding support', 'Confidential access handling'],
+          stack: ['PHP', 'MySQL', 'AI Dashboards', 'Admin Workflow'],
+          preview: 'registrar',
+          featured: true,
+        },
+        {
+          id: 'project-bookkeeping',
+          title: 'Bookkeeping',
+          category: 'Finance Operations',
+          icon: 'fa-solid fa-book',
+          summary: 'A bookkeeping-oriented workflow system for organized financial record support.',
+          impact: 'More organized business record management',
+          status: 'Project archive',
+          role: 'System Developer',
+          platform: 'Business System',
+          delivery: 'Project archive',
+          stack: ['Finance Workflow', 'Records', 'Reports'],
         },
         {
           id: 'project-police-rescue',
-          title: 'Police and Rescue Services Management System',
+          title: 'Police and Rescue SMS/CMS',
           category: 'Emergency Response System',
           icon: 'fa-solid fa-tower-broadcast',
-          summary: 'A response coordination system for incident intake, dispatch visibility, media capture, and real-time rescue support workflows.',
-          impact: 'Faster incident visibility and coordinated response handling',
+          summary: 'A response coordination concept focused on incident visibility, dispatch support, and field communication while avoiding disclosure of operational response details.',
+          impact: 'Better incident visibility and response coordination',
           metric: 'Dispatch ready',
-          metricLabel: 'Mobile and web response views',
-          status: 'Field-response concept build',
+          metricLabel: 'Web and mobile response support',
+          status: 'Concept summary',
           role: 'Full-stack / Mobile App Developer',
           platform: 'Web + Mobile',
-          delivery: 'Dispatch + Incident Intake',
-          features: ['Incident intake board', 'Camera evidence support', 'Rescue dispatch tracking'],
+          delivery: 'Project archive',
+          features: ['Incident intake support', 'Field update capture', 'Dispatch tracking visibility'],
           stack: ['Mobile App', 'Web App', 'Geotagging', 'Dispatch'],
           preview: 'response',
         },
@@ -2001,76 +2108,29 @@ function initModalHandlers() {
 
   function renderProjectsContent(section) {
     const projects = section.items || [];
-    const renderProjectCard = (project) => `
-      <article class="projects-showcase-card" id="${project.id || ''}">
-        <div class="projects-showcase-copy">
-          <div>
-            <div class="projects-showcase-kicker">
-              <span class="projects-showcase-badge">
-                <i class="${project.icon || 'fa-solid fa-layer-group'}" aria-hidden="true"></i>
-                ${project.category || 'System Build'}
-              </span>
-              <span class="projects-showcase-metric">${project.metric || ''}</span>
-            </div>
-            <h3 class="projects-showcase-title">${project.title}</h3>
-            <p class="projects-showcase-summary">${project.summary}</p>
+    const renderProjectRow = (project) => `
+      <article class="portfolio-project-row" ${project.id ? `id="${project.id}"` : ''}>
+        <div class="portfolio-project-archive-main">
+          <div class="portfolio-project-archive-titleline">
+            <h3>${project.title}</h3>
+            <span>${project.category || 'Project'}</span>
           </div>
-
-          <div class="projects-showcase-meta">
-            <p class="projects-showcase-impact">${project.impact}</p>
-            <p class="projects-showcase-metric-label">${project.metricLabel || ''}</p>
-            <div class="projects-showcase-detail-grid">
-              <div class="projects-showcase-detail-card">
-                <span class="projects-showcase-detail-label">Status</span>
-                <strong>${project.status || 'Portfolio Build'}</strong>
-              </div>
-              <div class="projects-showcase-detail-card">
-                <span class="projects-showcase-detail-label">Role</span>
-                <strong>${project.role || 'Developer'}</strong>
-              </div>
-              <div class="projects-showcase-detail-card">
-                <span class="projects-showcase-detail-label">Platform</span>
-                <strong>${project.platform || 'Web App'}</strong>
-              </div>
-              <div class="projects-showcase-detail-card">
-                <span class="projects-showcase-detail-label">Delivery</span>
-                <strong>${project.delivery || 'End-to-end'}</strong>
-              </div>
-            </div>
-            <div class="projects-showcase-feature-list">
-              ${(project.features || []).map((feature) => `
-                <span class="projects-showcase-feature">
-                  <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                  ${feature}
-                </span>
-              `).join('')}
-            </div>
-            <div class="projects-showcase-tags">
-              ${(project.stack || []).map((tag) => `<span class="projects-showcase-tag">${tag}</span>`).join('')}
-            </div>
-          </div>
+          <p>${project.summary}</p>
         </div>
-
-        <div class="projects-showcase-visual">
-          ${renderProjectPreview(project)}
+        <div class="portfolio-project-archive-side">
+          <strong>${project.role || 'Developer'}</strong>
+          <span>${project.platform || 'Web App'}</span>
+        </div>
+        <div class="portfolio-project-archive-tags">
+          ${(project.stack || []).map((tag) => `<span>${tag}</span>`).join('')}
         </div>
       </article>
     `;
 
     return `
-      <section class="projects-showcase-grid projects-showcase-grid-desktop">
-        ${projects.map((project) => renderProjectCard(project)).join('')}
-      </section>
-      <section class="projects-showcase-swiper-shell">
-        <div class="swiper projectsShowcaseSwiper">
-          <div class="swiper-wrapper">
-            ${projects.map((project) => `
-              <div class="swiper-slide">
-                ${renderProjectCard(project)}
-              </div>
-            `).join('')}
-          </div>
-          <div class="swiper-pagination projects-showcase-pagination"></div>
+      <section class="portfolio-projects">
+        <div class="portfolio-projects-archive">
+          ${projects.map((project) => renderProjectRow(project)).join('')}
         </div>
       </section>
     `;
@@ -2079,40 +2139,10 @@ function initModalHandlers() {
   let projectsShowcaseSwiper = null;
 
   function initProjectsShowcaseSwiper() {
-    if (typeof Swiper === 'undefined') return;
-
     if (projectsShowcaseSwiper) {
       projectsShowcaseSwiper.destroy(true, true);
       projectsShowcaseSwiper = null;
     }
-
-    const showcaseSwiperEl = document.querySelector('.projectsShowcaseSwiper');
-    if (!showcaseSwiperEl) return;
-
-    projectsShowcaseSwiper = new Swiper('.projectsShowcaseSwiper', {
-      slidesPerView: 1,
-      spaceBetween: 16,
-      speed: 700,
-      loop: true,
-      grabCursor: true,
-      autoHeight: true,
-      centeredSlides: true,
-      pagination: {
-        el: '.projects-showcase-pagination',
-        clickable: true,
-        dynamicBullets: true,
-        dynamicMainBullets: 3,
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 1.08,
-          centeredSlides: false,
-        },
-        768: {
-          enabled: false,
-        },
-      },
-    });
   }
 
   function initModalReviewSwiper() {
