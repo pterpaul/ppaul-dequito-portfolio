@@ -95,30 +95,30 @@ window.reviewsData = [
     ],
     suggestion: `"I'd encourage him to take more lead on architectural decisions. He has the technical foundation; now it's just about stepping into that senior-level ownership."`
   },
-  {
-    author: 'Pearl Aljheane Carm***',
-    role: 'Accountant at SYL Hermanos',
-    image: 'assets/img_reviews_db/reviewer-img-photo-7.jpg',
-    reviewerType: 'Work Colleague, Friend',
-    reviewDate: '2026-03-31',
-    reviewParagraphs: [
-      `"Peter is a nice friend, work colleague and great mentor. He allowing me to grow in my career and gain valuable experience and basic knowledge regarding in IT basics."`,
-      `"His approachable, disciplined and willing to help, support and teach others."`
-    ],
-    suggestion: `"Peter can continue to build on his strengths and work on areas for improvement."`
-  },
-  {
-    author: 'Andreo Dalaw***',
-    role: 'Remote Worker | IT Consultant at SYL Hermanos',
-    image: 'assets/img_reviews_db/reviewer-img-photo-9.png',
-    reviewerType: 'Work Colleague',
-    reviewDate: '2026-04-01',
-    reviewParagraphs: [
-      `"Having managed Peter Paul, I've seen his exceptional dedication firsthand. He was a pillar of our IT support, consistently providing high-tier service while handling infrastructure challenges with a calm, professional demeanor."`,
-      `"His reliability under pressure. Peter Paul is the type of professional who ensures systems stay stable and users stay supported, no matter how complex the technical environment gets."`
-    ],
-    suggestion: `"He needs to keep up the good work. He can be a great asset to any team."`
-  },
+  // {
+  //   author: 'Pearl Aljheane Carm***',
+  //   role: 'Accountant at SYL Hermanos',
+  //   image: 'assets/img_reviews_db/reviewer-img-photo-7.jpg',
+  //   reviewerType: 'Work Colleague, Friend',
+  //   reviewDate: '2026-03-31',
+  //   reviewParagraphs: [
+  //     `"Peter is a nice friend, work colleague and great mentor. He allowing me to grow in my career and gain valuable experience and basic knowledge regarding in IT basics."`,
+  //     `"His approachable, disciplined and willing to help, support and teach others."`
+  //   ],
+  //   suggestion: `"Peter can continue to build on his strengths and work on areas for improvement."`
+  // },
+  // {
+  //   author: 'Andreo Dalaw***',
+  //   role: 'Remote Worker | IT Consultant at SYL Hermanos',
+  //   image: 'assets/img_reviews_db/reviewer-img-photo-9.png',
+  //   reviewerType: 'Work Colleague',
+  //   reviewDate: '2026-04-01',
+  //   reviewParagraphs: [
+  //     `"Having managed Peter Paul, I've seen his exceptional dedication firsthand. He was a pillar of our IT support, consistently providing high-tier service while handling infrastructure challenges with a calm, professional demeanor."`,
+  //     `"His reliability under pressure. Peter Paul is the type of professional who ensures systems stay stable and users stay supported, no matter how complex the technical environment gets."`
+  //   ],
+  //   suggestion: `"He needs to keep up the good work. He can be a great asset to any team."`
+  // },
   {
     author: 'Kim Jade Baro***',
     role: 'IT Supervisor at SYL Hermanos',
