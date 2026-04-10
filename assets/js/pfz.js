@@ -1,5 +1,34 @@
 
 // Total Work Experience Calculation
+  function getCurrentMonthValue() {
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+  }
+
+  function resolveMonthValue(value) {
+    const normalized = String(value || '').trim().toLowerCase();
+    if (!normalized || normalized === 'present' || normalized === 'current' || normalized === 'today' || normalized === 'now') {
+      return getCurrentMonthValue();
+    }
+
+    return value;
+  }
+
+  function formatMonthLabel(value, presentLabel = 'Present') {
+    const normalized = String(value || '').trim().toLowerCase();
+    if (!normalized || normalized === 'present' || normalized === 'current' || normalized === 'today' || normalized === 'now') {
+      return presentLabel;
+    }
+
+    const [year, month] = String(value).split('-').map(Number);
+    if (!year || !month) return String(value || '');
+    return `${String(month).padStart(2, '0')}.${year}`;
+  }
+
+  function formatMonthRangeLabel(start, end, presentLabel = 'Present') {
+    return `${formatMonthLabel(start, presentLabel)} - ${formatMonthLabel(end, presentLabel)}`;
+  }
+
   function calculateExperience() {
     const companies = document.querySelectorAll('.unified-list > ul > li');
 
@@ -8,8 +37,14 @@
       const dateSpans = company.querySelectorAll('.date-span');
 
       dateSpans.forEach(span => {
-        const start = new Date(span.getAttribute('data-start'));
-        const end = new Date(span.getAttribute('data-end'));
+        const startValue = span.getAttribute('data-start');
+        const endValue = span.getAttribute('data-end');
+        if (!startValue || !endValue) return;
+
+        span.innerText = formatMonthRangeLabel(startValue, endValue);
+
+        const start = new Date(resolveMonthValue(startValue));
+        const end = new Date(resolveMonthValue(endValue));
 
         // Calculate difference in months
         const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
@@ -250,6 +285,91 @@
     return (items || []).filter(Boolean).join(', ');
   }
 
+  function escapeHtml(value) {
+    return String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function getReviewsData() {
+    return Array.isArray(window.reviewsData) ? window.reviewsData : [];
+  }
+
+  function normalizeReviewerTypes(value) {
+    if (Array.isArray(value)) {
+      return value.map((entry) => String(entry || '').trim()).filter(Boolean);
+    }
+
+    if (typeof value === 'string') {
+      return value
+        .split(',')
+        .map((entry) => entry.trim())
+        .filter(Boolean);
+    }
+
+    return [];
+  }
+
+  function serializeReviewerTypes(value) {
+    return normalizeReviewerTypes(value).join('|');
+  }
+
+  function parseReviewerTypes(value) {
+    if (typeof value !== 'string') return [];
+
+    return value
+      .split('|')
+      .map((entry) => entry.trim())
+      .filter(Boolean);
+  }
+
+  function renderReviewSlidesMarkup(reviews) {
+    return (reviews || []).map((review) => {
+      const paragraphs = Array.isArray(review.reviewParagraphs) ? review.reviewParagraphs : [];
+      const suggestion = review.suggestion || '';
+      const reviewDate = review.reviewDate || '';
+      const reviewerType = serializeReviewerTypes(review.reviewerType);
+
+      return `
+        <div class="swiper-slide">
+          <div class="review-card p-4 sm:p-5" data-reviewer-type="${escapeHtml(reviewerType)}">
+            <div class="flex items-center gap-3 pb-2">
+              <img
+                src="${escapeHtml(review.image || 'assets/img/reviewer1.jpg')}"
+                style="width: 40px; height: 40px;"
+                class="w-8 h-8 rounded-full mr-1 review-avatar-confidential"
+                alt="${escapeHtml(review.author || 'Reviewer')}"
+              >
+              <div>
+                <p class="font-size-12b mb-0">${escapeHtml(review.author || 'Reviewer')}</p>
+                <p class="font-size-12 text-gray-500 mb-0">${escapeHtml(review.role || '')}</p>
+              </div>
+            </div>
+            ${paragraphs.map((paragraph, index) => `
+              <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" ${index === 0 ? 'data-review-overall-performance' : 'data-review-like-the-most'}>
+                ${escapeHtml(paragraph)}
+              </p>
+            `).join('')}
+            <p class="font-size-10 text-gray-300 mb-0 inline-flex items-center" data-review-suggestions-improvements hidden="true">
+              ${escapeHtml(suggestion)}
+            </p>
+            <p class="reviewed-date" hidden="true">${escapeHtml(reviewDate)}</p>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function populateReviewsSection() {
+    const reviewsWrapper = document.getElementById('reviewsSwiperWrapper');
+    if (!reviewsWrapper) return;
+
+    reviewsWrapper.innerHTML = renderReviewSlidesMarkup(getReviewsData());
+  }
+
   function includesAny(q, terms) {
     return (terms || []).some((term) => q.includes(normalizeChatText(term)));
   }
@@ -308,8 +428,18 @@
       pushResponse('profile', 70, `${kb.profile.name} is an ${kb.profile.title} based in ${kb.profile.location}. ${kb.profile.summary}`);
     }
 
-    if (includesAny(normalizedQuestion, kb.chat?.categories?.experience) && kb.experience?.length >= 3) {
-      pushResponse('experience', 68, `I am remote worker and cybersecurity analyst. My main experience includes ${kb.experience[0].company} as ${kb.experience[0].roles.join(' / ')}, plus ${kb.experience[1].company} and ${kb.experience[2].company}. Key work covers ${kb.experience[0].highlights.join(', ')}.`);
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.experience) && kb.experience?.length >= 2) {
+      const primaryExperience = kb.experience[0];
+      const additionalCompanies = kb.experience
+        .slice(1, 4)
+        .map((entry) => entry.publicCompany || entry.company)
+        .join(', ');
+
+      pushResponse(
+        'experience',
+        68,
+        `I am a remote worker and cybersecurity analyst. My main experience includes ${(primaryExperience.publicCompany || primaryExperience.company)} as ${primaryExperience.roles.join(' / ')}${additionalCompanies ? `, plus ${additionalCompanies}` : ''}. Key work covers ${primaryExperience.highlights.join(', ')}.`
+      );
     }
 
     if (includesAny(normalizedQuestion, kb.chat?.categories?.education)) {
@@ -491,6 +621,7 @@
    // Run the functions when the page loads
     window.onload = function() {
       calculateExperience();
+      populateReviewsSection();
       handleStickyNav();
       initProjectsCarousel();
       initReviewsCarousel();
@@ -823,6 +954,33 @@ function initModalHandlers() {
       subtitle: 'Overall professional history across anytype of roles, and business-facing technical service.',
       companies: [
         {
+          company: 'LevelBlue',
+          publicCompany: 'LevelBlue',
+          blurCompany: true,
+          iconClass: 'fas fa-building-shield',
+          iconColorClass: 'text-indigo-600',
+          employmentType: 'Remote',
+          industry: 'Cybersecurity Operations',
+          roles: [
+            {
+              title: 'Cybersecurity Expert - Remote',
+              start: '2026-02',
+              end: 'present',
+            },
+          ],
+          details: [
+            'Supports remote cybersecurity operations, monitoring-focused work, and security posture improvements in a managed security environment.',
+            'Handles security reviews, endpoint visibility support, and practical threat-aware administration without exposing client-sensitive details.',
+          ],
+          competencies: [
+            'Cybersecurity Operations',
+            'Remote Security Support',
+            'Threat Monitoring',
+            'Endpoint Security',
+            'Security Administration',
+          ],
+        },
+        {
           company: 'SYL Hermanos',
           iconClass: 'fas fa-building',
           iconColorClass: 'text-blue-600',
@@ -832,7 +990,7 @@ function initModalHandlers() {
             {
               title: 'IT Specialist',
               start: '2023-10',
-              end: '2026-04',
+              end: 'present',
             },
             {
               title: 'IT Assistant',
@@ -911,6 +1069,7 @@ function initModalHandlers() {
         },
         {
           company: 'Nokia Solutions and Networks',
+          publicCompany: 'Confidential Company',
           blurCompany: true,
           iconClass: 'fas fa-building',
           iconColorClass: 'text-amber-600',
@@ -1302,48 +1461,7 @@ function initModalHandlers() {
     reviews: {
       title: 'Reviews and Recommendations',
       subtitle: 'Feedback highlighting reliability, technical depth, mentorship, and team collaboration.',
-      items: [
-        {
-          meta: 'Andreo Dalawwangbayan | IT Manager',
-          title: 'Trusted and Adaptable',
-          description: '"Great service and support. Trustworthy and adaptable. Highly recommended!"',
-          reviewerType: 'Work Colleague',
-          sentiment: 100,
-          reviewDate: '2026-03-26'
-        },
-        {
-          meta: 'Jahleel Arizala | Senior Media Buyer',
-          title: 'Professional and Proactive',
-          description: '"Peter Paul consistently demonstrates a positive attitude and strong work ethic. He is proactive, reliable, and shows initiative in completing tasks."',
-          reviewerType: 'Friend',
-          sentiment: 100,
-          reviewDate: '2026-03-26'
-        },
-        {
-          meta: 'Pearl Carmelo | Accountant',
-          title: 'Strong Mentor and Teammate',
-          description: '"Peter is a nice friend, work colleague and great mentor. He allowing me to grow in my career and gain valuable experience and basic knowledge regarding in IT basics."',
-          reviewerType: 'Work Colleague',
-          sentiment: 100,
-          reviewDate: '2026-03-27'
-        },
-        {
-          meta: 'Kim Jade Baroa | IT Supervisor',
-          title: 'Strong Mentor and Teammate',
-          description: '"Peter is a great teammate and mentor. He showed us his expertise and amazing knowledge."',
-          reviewerType: 'Work Colleague',
-          sentiment: 100,
-          reviewDate: '2026-03-27'
-        },
-        {
-          meta: 'Jason Bernard Ongsuco | Social Media Marketing | Video Editor',
-          title: 'Proactive and Adaptable',
-          description: '"Highly recommended!"',
-          reviewerType: 'Instructor',
-          sentiment: 100,
-          reviewDate: '2026-03-29'
-        }
-      ]
+      items: getReviewsData()
     }
   };
 
@@ -1400,6 +1518,7 @@ function initModalHandlers() {
         author,
         role,
         image,
+        reviewerType: parseReviewerTypes(card.dataset.reviewerType),
         reviewParagraphs,
         suggestion,
         reviewDate: parseReviewDateValue(reviewDateValue),
@@ -1431,6 +1550,11 @@ function initModalHandlers() {
   }
 
   function detectReviewerTypes(review) {
+    const assignedTypes = normalizeReviewerTypes(review?.reviewerType);
+    if (assignedTypes.length) {
+      return assignedTypes;
+    }
+
     const combinedText = normalizeChatText([
       review.author,
       review.role,
@@ -1767,15 +1891,13 @@ function initModalHandlers() {
   }
 
   function formatMonthRange(start, end) {
-    const [startYear, startMonth] = start.split('-').map(Number);
-    const [endYear, endMonth] = end.split('-').map(Number);
-    return `${String(startMonth).padStart(2, '0')}.${startYear} - ${String(endMonth).padStart(2, '0')}.${endYear}`;
+    return formatMonthRangeLabel(start, end);
   }
 
   function formatDurationFromRoles(roles) {
     const totalMonths = (roles || []).reduce((sum, role) => {
       const [startYear, startMonth] = role.start.split('-').map(Number);
-      const [endYear, endMonth] = role.end.split('-').map(Number);
+      const [endYear, endMonth] = resolveMonthValue(role.end).split('-').map(Number);
       return sum + ((endYear - startYear) * 12 + (endMonth - startMonth));
     }, 0);
 
@@ -2008,13 +2130,13 @@ function initModalHandlers() {
             <small>Protected Endpoints</small>
           </div>
           <div class="project-preview-kpis">
-            <span><strong>56</strong><small>Devices</small></span>
+            <span><strong>125</strong><small>Devices</small></span>
             <span><strong>04</strong><small>Open Alerts</small></span>
             <span><strong>1.2m</strong><small>Avg Response</small></span>
           </div>
-          <div class="project-preview-ring">
+          <div class="project-preview-ring" style="--ring-progress: 98.88;">
             <div class="project-preview-ring-value">
-              <strong>96.5%</strong>
+              <strong>98.88%</strong>
               <small>Protected</small>
             </div>
           </div>

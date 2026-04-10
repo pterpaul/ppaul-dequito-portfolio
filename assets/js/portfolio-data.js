@@ -4,7 +4,7 @@ window.portfolioData = {
     title: 'IT Specialist | Cybersecurity Analyst',
     location: 'Iloilo, Western Visayas, Philippines',
     publicLocation: 'Philippines',
-    activeWork: 'Currently, I am a remote worker focused on cybersecurity, IT operations, systems administration, and secure infrastructure support.',
+    activeWork: 'Currently, I am a remote worker focused on cybersecurity, IT operations, systems administration, and secure infrastructure support, including confidential security work.',
     summary:
       'IT professional focused on dependable support, secure operations, systems administration, infrastructure workflows, and practical business-ready solutions.',
   },
@@ -76,6 +76,16 @@ window.portfolioData = {
   },
   experience: [
     {
+      company: 'LevelBlue',
+      publicCompany: 'LevelBlue',
+      roles: ['Cybersecurity Expert - Remote'],
+      highlights: [
+        'remote cybersecurity operations',
+        'security monitoring',
+        'endpoint visibility and protection support',
+      ],
+    },
+    {
       company: 'SYL Hermanos',
       roles: ['IT Specialist', 'IT Assistant'],
       highlights: [
@@ -91,6 +101,7 @@ window.portfolioData = {
     },
     {
       company: 'Nokia Solutions and Networks',
+      publicCompany: 'Confidential Company',
       roles: ['Warehouse Man'],
       highlights: ['warehouse operations', 'audit support', 'data entry', 'inventory coordination'],
     },

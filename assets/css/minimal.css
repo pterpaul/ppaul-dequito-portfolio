@@ -2257,6 +2257,7 @@ html.dark .sticky-hero-title {
 .date-span {
   font-weight: 600;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 /* About Section under Text Summary */
@@ -2936,19 +2937,33 @@ html.dark .project-card::after {
 }
 
 .project-preview-ring {
+  --ring-progress: 96.5;
   position: relative;
   width: 5.2rem;
   height: 5.2rem;
   margin: 0.7rem auto 0;
   border-radius: 9999px;
-  border: 0.7rem solid rgba(13, 117, 253, 0.18);
-  border-top-color: rgba(13, 117, 253, 0.88);
+  background:
+    conic-gradient(
+      rgba(13, 117, 253, 0.88) 0 calc(var(--ring-progress) * 1%),
+      rgba(13, 117, 253, 0.18) calc(var(--ring-progress) * 1%) 100%
+    );
   box-shadow: inset 0 0 0 1px rgba(13, 117, 253, 0.12);
+}
+
+.project-preview-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0.7rem;
+  border-radius: 9999px;
+  background: var(--card);
+  box-shadow: inset 0 0 0 1px rgba(13, 117, 253, 0.08);
 }
 
 .project-preview-ring-value {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
