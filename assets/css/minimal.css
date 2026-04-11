@@ -3693,6 +3693,10 @@ html.dark .review-card .font-size-12.text-gray-500 {
   transition: transform 0.42s ease, opacity 0.42s ease;
 }
 
+.gallery-carousel .swiper-slide.gallery-slide-landscape {
+  width: 320px !important;
+}
+
 .gallery-carousel .swiper-slide-active {
   opacity: 1;
   transform: scale(1);
@@ -3900,9 +3904,14 @@ html.dark .review-card .font-size-12.text-gray-500 {
     width: 184px !important;
   }
 
+  .gallery-carousel .swiper-slide.gallery-slide-landscape {
+    width: 248px !important;
+  }
+
   .gallery-card {
     min-height: 150px;
   }
+
 
   .gallery-title {
     font-size: 0.82rem;
@@ -4717,6 +4726,127 @@ html.dark .projectSwiper .swiper-button-next {
   color: var(--primary);
   transform: translateY(-1px) scale(1.03);
   box-shadow: 0 14px 28px rgba(13, 117, 253, 0.18);
+}
+
+.quick-action-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1198;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(127, 179, 255, 0.16), transparent 46%),
+    rgba(247, 250, 255, 0);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    -webkit-backdrop-filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.quick-action-overlay.quick-action-overlay-visible {
+  opacity: 1;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(127, 179, 255, 0.18), transparent 44%),
+    rgba(247, 250, 255, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.quick-action-overlay-mark {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 4.4rem;
+  height: 4.4rem;
+  transform: translate(-50%, -50%) scale(0.84);
+  opacity: 0;
+  filter: drop-shadow(0 0 16px rgba(110, 178, 255, 0.22));
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.quick-action-overlay-mark-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.quick-action-overlay-mark-stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 96;
+  stroke-dashoffset: 96;
+}
+
+.quick-action-overlay-mark-stroke-main {
+  stroke: rgba(96, 165, 250, 0.95);
+  stroke-width: 5.2;
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.18));
+}
+
+.quick-action-overlay-mark-stroke-accent {
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 2.1;
+  stroke-dasharray: 42;
+  stroke-dashoffset: 42;
+  opacity: 0.7;
+}
+
+.quick-action-overlay.quick-action-overlay-visible .quick-action-overlay-mark {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  filter:
+    drop-shadow(0 0 18px rgba(110, 178, 255, 0.28))
+    drop-shadow(0 0 28px rgba(13, 117, 253, 0.14));
+}
+
+.quick-action-overlay.quick-action-overlay-visible .quick-action-overlay-mark-stroke-main {
+  animation: quickActionMarkDraw 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.quick-action-overlay.quick-action-overlay-visible .quick-action-overlay-mark-stroke-accent {
+  animation: quickActionMarkDrawAccent 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.04s forwards;
+}
+
+.quick-action-trigger-active {
+  transform: translateY(-1px) scale(0.985);
+  opacity: 0.9;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.32s ease,
+    box-shadow 0.32s ease;
+}
+
+@keyframes quickActionMarkDraw {
+  0% {
+    stroke-dashoffset: 96;
+    opacity: 0.35;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes quickActionMarkDrawAccent {
+  0% {
+    stroke-dashoffset: 42;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.78;
+  }
 }
 
 .review-extra-note,

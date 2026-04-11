@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>PPaul Dequito</title>
   <link rel="icon" type="image/x-icon" href="assets/img/pfz.png" />
-  <link href="assets/css/minimal.css?v=6" rel="stylesheet" />
+  <link href="assets/css/minimal.css?v=10" rel="stylesheet" />
   <link href="assets/css/effects.css?v=6" rel="stylesheet">
   <link href="assets/css/output.css?v=6" rel="stylesheet">
   <link href="assets/css/disable-features.css" rel="stylesheet">
@@ -20,7 +20,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="assets/js/portfolio-data.js?v=1"></script>
   <script src="assets/js/reviews-data.js?v=2"></script>
-  <script src="assets/js/pfz.js?v=9"></script>
+  <script src="assets/js/pfz.js?v=16"></script>
   <script src="assets/js/disable-devtools.js"></script>
 </head>
 <!-- <body> -->
@@ -358,9 +358,9 @@
             <div class="bg-gray-100 dark:bg-gray-800 mt-2 p-4 shadow-sm rounded-sm">
               <div class="relative flex items-start justify-between">
                 <h2 class="text-2xl my-0 text-base sm:text-sm md:text-md font-bold">Education</h2>
-                <a class="pfz-btn-view items-center gap-1 px-3 text-sm" href="#" data-modal-section="education">
+                <!-- <a class="pfz-btn-view items-center gap-1 px-3 text-sm" href="#" data-modal-section="education">
                   <i class="fas fa-eye"></i>&nbsp;View All
-                </a>
+                </a> -->
               </div>
 
               <div class="unified-list mt-2">
@@ -432,7 +432,9 @@
                   <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-whmcs"></i>&nbsp;Wazuh (SIEM)</span>
                   <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-street-view"></i>&nbsp;SolarWinds</span>
                   <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-cloud"></i>&nbsp;Microsoft 365 Defender</span>
-                  </div>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-microsoft"></i>&nbsp;Azure AD</span>
+                  <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-microchip"></i>&nbsp;Wireshark</span>
+                </div>
                 </div>
                 <hr class="my-3 border-gray-300 dark:border-gray-700">
 
@@ -445,6 +447,8 @@
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-bootstrap"></i>&nbsp;Bootstrap</span>
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-js"></i>&nbsp;JavaScript</span>
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-react"></i>&nbsp;React</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-vuejs"></i>&nbsp;Vue.js</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Flutter</span>
                   </div>
                   <hr class="my-3 border-gray-300 dark:border-gray-700">
                 </div>
@@ -453,6 +457,7 @@
                   <div class="sub-title f14 font-bold mb-1">Backend</div>
                   <div class="flex flex-wrap gap-3">
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;MySQL</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;SQL</span>
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-php"></i>&nbsp;PHP</span>
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-python"></i>&nbsp;Python</span>
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-java"></i>&nbsp;Java</span>
@@ -463,22 +468,11 @@
                 </div>
 
                 <div class="techstack-inline-group" data-techstack-extra hidden>
-                  <div class="sub-title f14 font-bold mb-1">Databases</div>
+                  <div class="sub-title f14 font-bold mb-1">Virtualization</div>
                   <div class="flex flex-wrap gap-3">
-                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;SQL Server Management</span>
-                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;MongoDB</span>
-                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-database"></i>&nbsp;PhpMyAdmin</span>
-                  </div>
-                  <hr class="my-3 border-gray-300 dark:border-gray-700">
-                </div>
-
-                <div class="techstack-inline-group" data-techstack-extra hidden>
-                  <div class="sub-title f14 font-bold mb-1">Mobile Development</div>
-                  <div class="flex flex-wrap gap-3">
-                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-mobile-screen-button"></i>&nbsp;Flutter</span>
-                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-code"></i>&nbsp;Dart</span>
-                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-android"></i>&nbsp;Android</span>
-                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-brands fa-apple"></i>&nbsp;iOS</span>
+                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-server"></i>&nbsp;Hyper-V</span>
+                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-server"></i>&nbsp;VMware Workstation</span>
+                    <span class="tech-badge font-size-10 text-gray-400"><i class="fa-solid fa-server"></i>&nbsp;VMware ESXI</span>
                   </div>
                   <hr class="my-3 border-gray-300 dark:border-gray-700">
                 </div>
@@ -489,7 +483,7 @@
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-robot"></i>&nbsp;ChatGPT</span>
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-robot"></i>&nbsp;Gemini</span>
                     <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-brain"></i>&nbsp;Microsoft Copilot</span>
-                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-microchip"></i>&nbsp;Claude</span>
+                    <span class="tech-badge font-size-12 text-gray-400"><i class="fa-solid fa-microchip"></i>&nbsp;Use AI</span>
                   </div>
                 </div>
               </div>
@@ -1519,27 +1513,10 @@
                 <div class="swiper-slide">
                   <article class="gallery-card">
                     <div class="gallery-card-media">
-                      <img src="assets/img/pfz_gallery/photo1.jpg" alt="Gallery photo 1" class="gallery-card-image">
+                      <img src="assets/img/pfz_gallery/photo14.jpg" alt="Gallery photo 14" class="gallery-card-image">
                     </div>
                   </article>
                 </div>
-
-                <div class="swiper-slide">
-                  <article class="gallery-card">
-                    <div class="gallery-card-media">
-                      <img src="assets/img/pfz_gallery/photo2.jpg" alt="Gallery photo 2" class="gallery-card-image">
-                    </div>
-                  </article>
-                </div>
-
-                <div class="swiper-slide">
-                  <article class="gallery-card">
-                    <div class="gallery-card-media">
-                      <img src="assets/img/pfz_gallery/photo3.jpg" alt="Gallery photo 3" class="gallery-card-image">
-                    </div>
-                  </article>
-                </div>
-
                 <div class="swiper-slide">
                   <article class="gallery-card">
                     <div class="gallery-card-media">
@@ -1547,6 +1524,41 @@
                     </div>
                   </article>
                 </div>
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo0.jpg" alt="Gallery photo 0" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide gallery-slide-landscape">
+                  <article class="gallery-card gallery-card-landscape">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo2.jpg" alt="Gallery photo 2" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo1.jpg" alt="Gallery photo 1" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo13.jpg" alt="Gallery photo 13" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+                <!-- <div class="swiper-slide">
+                  <article class="gallery-card">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo3.jpg" alt="Gallery photo 3" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div> -->
 
                 <div class="swiper-slide">
                   <article class="gallery-card">
@@ -1591,24 +1603,32 @@
                 <div class="swiper-slide">
                   <article class="gallery-card">
                     <div class="gallery-card-media">
-                      <img src="assets/img/pfz_gallery/photo10.jpg" alt="Gallery photo 9" class="gallery-card-image">
+                      <img src="assets/img/pfz_gallery/photo10.jpg" alt="Gallery photo 10" class="gallery-card-image">
                     </div>
                   </article>
                 </div>
                 <div class="swiper-slide">
                   <article class="gallery-card">
                     <div class="gallery-card-media">
-                      <img src="assets/img/pfz_gallery/photo11.jpg" alt="Gallery photo 9" class="gallery-card-image">
+                      <img src="assets/img/pfz_gallery/photo11.jpg" alt="Gallery photo 11" class="gallery-card-image">
                     </div>
                   </article>
                 </div>
                 <div class="swiper-slide">
                   <article class="gallery-card">
                     <div class="gallery-card-media">
-                      <img src="assets/img/pfz_gallery/photo12.jpg" alt="Gallery photo 9" class="gallery-card-image">
+                      <img src="assets/img/pfz_gallery/photo12.jpg" alt="Gallery photo 12" class="gallery-card-image">
                     </div>
                   </article>
                 </div>
+                <div class="swiper-slide gallery-slide-landscape">
+                  <article class="gallery-card gallery-card-landscape">
+                    <div class="gallery-card-media">
+                      <img src="assets/img/pfz_gallery/photo15.jpg" alt="Gallery photo 15" class="gallery-card-image">
+                    </div>
+                  </article>
+                </div>
+                
               </div>
               <div class="swiper-pagination gallery-swiper-pagination mt-3"></div>
             </div>

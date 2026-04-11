@@ -71,6 +71,81 @@
   let lastSectionState = null;
   let backButtonDelayTimer = null;
   let backButtonDelayReady = false;
+  let quickActionTransitionTimer = null;
+  let quickActionOverlayTimer = null;
+
+  function ensureQuickActionOverlay() {
+    let overlay = document.getElementById('quickActionOverlay');
+    if (overlay) return overlay;
+
+    overlay = document.createElement('div');
+    overlay.id = 'quickActionOverlay';
+    overlay.className = 'quick-action-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+      <span class="quick-action-overlay-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" class="quick-action-overlay-mark-svg">
+          <path class="quick-action-overlay-mark-stroke quick-action-overlay-mark-stroke-main" d="M24 50V14h15c7.2 0 13 5.8 13 13s-5.8 13-13 13H24" />
+          <path class="quick-action-overlay-mark-stroke quick-action-overlay-mark-stroke-accent" d="M24 50V14" />
+        </svg>
+      </span>
+    `;
+    document.body.appendChild(overlay);
+    return overlay;
+  }
+
+  function triggerQuickActionTransition(triggerEl) {
+    const overlay = ensureQuickActionOverlay();
+
+    if (quickActionTransitionTimer) {
+      clearTimeout(quickActionTransitionTimer);
+      quickActionTransitionTimer = null;
+    }
+
+    if (quickActionOverlayTimer) {
+      clearTimeout(quickActionOverlayTimer);
+      quickActionOverlayTimer = null;
+    }
+
+    document.body.classList.add('quick-action-active');
+    overlay.classList.add('quick-action-overlay-visible');
+
+    if (triggerEl) {
+      triggerEl.classList.add('quick-action-trigger-active');
+    }
+
+    quickActionTransitionTimer = setTimeout(() => {
+      quickActionTransitionTimer = null;
+    }, 260);
+
+    quickActionOverlayTimer = setTimeout(() => {
+      document.body.classList.remove('quick-action-active');
+      overlay.classList.remove('quick-action-overlay-visible');
+      if (triggerEl) {
+        triggerEl.classList.remove('quick-action-trigger-active');
+      }
+      quickActionOverlayTimer = null;
+    }, 520);
+  }
+
+  function initQuickActionTransitions() {
+    ensureQuickActionOverlay();
+
+    document.addEventListener('click', (event) => {
+      const triggerEl = event.target.closest('.pfz-btn-view, .floating-back-btn, .hero-btn-message, a.text-blue-300.hover\\:text-cyan-200');
+      if (!triggerEl) return;
+
+      const textContent = triggerEl.textContent?.trim().toLowerCase() || '';
+      const isViewAll = triggerEl.classList.contains('pfz-btn-view');
+      const isBackButton = triggerEl.classList.contains('floating-back-btn');
+      const isHeroMessage = triggerEl.classList.contains('hero-btn-message');
+      const isSeeMore = textContent.includes('see more');
+
+      if (!isViewAll && !isBackButton && !isHeroMessage && !isSeeMore) return;
+
+      triggerQuickActionTransition(triggerEl);
+    });
+  }
 
   function clearBackButtonDelay() {
     if (backButtonDelayTimer) {
@@ -627,6 +702,7 @@
       initReviewsCarousel();
       initGalleryCarousel();
       initModalHandlers();
+      initQuickActionTransitions();
       initChatButtonAnimation();
       initPortfolioChat();
       showSection('about', { preserveHistory: false });

@@ -95,18 +95,18 @@ window.reviewsData = [
     ],
     suggestion: `"I'd encourage him to take more lead on architectural decisions. He has the technical foundation; now it's just about stepping into that senior-level ownership."`
   },
-  // {
-  //   author: 'Pearl Aljheane Carm***',
-  //   role: 'Accountant at SYL Hermanos',
-  //   image: 'assets/img_reviews_db/reviewer-img-photo-7.jpg',
-  //   reviewerType: 'Work Colleague, Friend',
-  //   reviewDate: '2026-03-31',
-  //   reviewParagraphs: [
-  //     `"Peter is a nice friend, work colleague and great mentor. He allowing me to grow in my career and gain valuable experience and basic knowledge regarding in IT basics."`,
-  //     `"His approachable, disciplined and willing to help, support and teach others."`
-  //   ],
-  //   suggestion: `"Peter can continue to build on his strengths and work on areas for improvement."`
-  // },
+  {
+    author: 'Pearl Aljheane Carm***',
+    role: 'Accountant at SYL Hermanos',
+    image: 'assets/img_reviews_db/reviewer-img-photo-7.jpg',
+    reviewerType: 'Work Colleague, Friend',
+    reviewDate: '2026-03-31',
+    reviewParagraphs: [
+      `"Peter is a nice friend, work colleague and great mentor. He allowing me to grow in my career and gain valuable experience and basic knowledge regarding in IT basics."`,
+      `"His approachable, disciplined and willing to help, support and teach others."`
+    ],
+    suggestion: `"Peter can continue to build on his strengths and work on areas for improvement."`
+  },
   // {
   //   author: 'Andreo Dalaw***',
   //   role: 'Remote Worker | IT Consultant at SYL Hermanos',
@@ -157,7 +157,7 @@ window.reviewsData = [
   },
   {
     author: 'Dennis Dequi***',
-    role: 'Seafarer | Businessman',
+    role: 'Seafarer | Entrepeneur',
     image: 'assets/img_reviews_db/reviewer-img-photo-15.jpg',
     reviewerType: 'Others, Friend',
     reviewDate: '2026-04-08',
@@ -166,6 +166,18 @@ window.reviewsData = [
       `"I value how he created a marketing platform for our monitors and a full system for our operations. He really understands business needs."`
     ],
     suggestion: `"He’s doing an excellent job. I just want to see him keep scaling; he has the potential to build even bigger systems."`
-  }
+  },
+  {
+    author: 'Ian Marko Lop***',
+    role: 'Software Engineer',
+    image: 'assets/img_reviews_db/reviewer-img-photo-16.jpg',
+    reviewerType: 'Schoolmate, Friend, Others',
+    reviewDate: '2026-04-08',
+    reviewParagraphs: [
+      `"Having been both schoolmates and workmates with Peter Paul from the very start, I’ve seen his dedication firsthand. He’s incredibly adaptable and is always willing to take on new challenges with an eagerness to expand his technical skills. He never stops learning."`,
+      `"What I value most is his commitment to growth. Peter Paul is the type of person who is constantly looking for ways to improve himself and his work. That kind of mindset makes him a really valuable asset to any team he’s part of."`
+    ],
+    suggestion: `"He just needs to keep believing in himself and his own potential. He has all the talent he needs; he just needs to keep executing and trusting his abilities as he moves forward."`
+  },
 ];
 
