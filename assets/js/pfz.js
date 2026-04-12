@@ -219,6 +219,11 @@
     });
 
     activeSectionKey = sectionKey;
+    trackAnalyticsEvent('section_view', {
+      event_category: 'navigation',
+      event_label: sectionKey,
+      section_name: sectionKey,
+    });
     scheduleBackButtonDelay(sectionKey);
     updateFloatingBackButton();
 
@@ -270,6 +275,11 @@
   }
 
   function scrollToProjectCaseStudy(projectId) {
+    trackAnalyticsEvent('project_case_study_view', {
+      event_category: 'projects',
+      event_label: projectId,
+      project_id: projectId,
+    });
     showSection('projects');
 
     requestAnimationFrame(() => {
@@ -445,8 +455,15 @@
     reviewsWrapper.innerHTML = renderReviewSlidesMarkup(getReviewsData());
   }
 
+  function matchesNormalizedTerm(q, term) {
+    const normalizedQuestion = ` ${normalizeChatText(q)} `;
+    const normalizedTerm = normalizeChatText(term);
+    if (!normalizedTerm) return false;
+    return normalizedQuestion.includes(` ${normalizedTerm} `);
+  }
+
   function includesAny(q, terms) {
-    return (terms || []).some((term) => q.includes(normalizeChatText(term)));
+    return (terms || []).some((term) => matchesNormalizedTerm(q, term));
   }
 
   function splitQuestionIntoParts(question) {
@@ -465,12 +482,124 @@
       .trim();
   }
 
+  function trackAnalyticsEvent(eventName, params = {}) {
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params);
+      }
+
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', eventName);
+      }
+    } catch (error) {
+      console.warn(`Unable to track analytics event: ${eventName}`, error);
+    }
+  }
+
+  function initAnalyticsTracking() {
+    document.querySelectorAll('a[href*="ppauldequito.pdf"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        trackAnalyticsEvent('cv_click', {
+          event_category: 'engagement',
+          event_label: 'portfolio_cv',
+        });
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      const emailLink = event.target.closest('a[href^="mailto:"]');
+      if (emailLink) {
+        trackAnalyticsEvent('email_click', {
+          event_category: 'contact',
+          event_label: emailLink.getAttribute('href') || 'mailto',
+        });
+      }
+
+      const projectRow = event.target.closest('.portfolio-project-row');
+      if (projectRow) {
+        const projectTitle = projectRow.querySelector('h3')?.textContent?.trim() || projectRow.id || 'project';
+        trackAnalyticsEvent('project_click', {
+          event_category: 'projects',
+          event_label: projectTitle,
+          project_id: projectRow.id || '',
+        });
+      }
+    });
+  }
+
+  function shouldPromptForLeadCapture(question, kb) {
+    const normalizedQuestion = normalizeChatText(question);
+    return includesAny(normalizedQuestion, kb.chat?.categories?.activeWork);
+  }
+
+  function isLikelyValidNamePart(value) {
+    const trimmed = String(value || '').trim();
+    if (trimmed.length < 2) return false;
+    if (/\d/.test(trimmed)) return false;
+    return /^[a-z][a-z'.-]{1,}$/i.test(trimmed);
+  }
+
+  function isLikelyValidEmail(value) {
+    const trimmed = String(value || '').trim().toLowerCase();
+    const basicEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    if (!basicEmailPattern.test(trimmed)) return false;
+
+    const fakeMarkers = ['test', 'fake', 'sample', 'example', 'dummy', 'none', 'unknown', 'asdf', 'qwerty'];
+    return !fakeMarkers.some((marker) => trimmed.includes(marker));
+  }
+
+  function saveChatLead(firstName, lastName, email) {
+    try {
+      const storageKey = 'pfzChatGuestLeads';
+      const existing = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      existing.push({
+        firstName,
+        lastName,
+        fullName: `${firstName} ${lastName}`.trim(),
+        email,
+        capturedAt: new Date().toISOString(),
+      });
+      localStorage.setItem(storageKey, JSON.stringify(existing));
+    } catch (error) {
+      console.warn('Unable to save chat lead locally.', error);
+    }
+  }
+
+  function getLastUserChatQuestion(chatMessages) {
+    const userMessages = Array.from(chatMessages.querySelectorAll('.chat-message.user .chat-bubble.user'));
+    const lastUserMessage = userMessages[userMessages.length - 1];
+    return lastUserMessage ? lastUserMessage.textContent.trim() : '';
+  }
+
+  async function submitChatLeadToWebhook(webhookUrl, payload) {
+    if (!webhookUrl) {
+      return { delivered: false, skipped: true };
+    }
+
+    const formBody = new URLSearchParams();
+    Object.entries(payload || {}).forEach(([key, value]) => {
+      formBody.append(key, value == null ? '' : String(value));
+    });
+
+    await fetch(webhookUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      },
+      body: formBody.toString(),
+    });
+
+    return { delivered: true, skipped: false };
+  }
+
   function findProjectMatches(kb, normalizedQuestion) {
     return (kb.projects || []).filter((project) => {
       const aliases = [project.name, ...(project.aliases || [])]
         .map((item) => normalizeChatText(item))
         .filter(Boolean);
-      return aliases.some((alias) => normalizedQuestion.includes(alias));
+      return aliases.some((alias) => matchesNormalizedTerm(normalizedQuestion, alias));
     });
   }
 
@@ -479,7 +608,7 @@
     return Object.entries(intents)
       .map(([id, intent]) => {
         const score = (intent.keywords || []).reduce((total, keyword) => (
-          normalizedQuestion.includes(normalizeChatText(keyword)) ? total + 1 : total
+          matchesNormalizedTerm(normalizedQuestion, keyword) ? total + 1 : total
         ), 0);
 
         return score > 0 ? {
@@ -493,9 +622,11 @@
       .sort((a, b) => (b.priority - a.priority) || (b.score - a.score));
   }
 
-  function collectCategoryResponses(kb, normalizedQuestion) {
+  function collectCategoryResponses(kb, normalizedQuestion, options = {}) {
     const responses = [];
+    const suppressedCategoryIds = new Set(options.suppressedCategoryIds || []);
     const pushResponse = (id, priority, text) => {
+      if (suppressedCategoryIds.has(id)) return;
       if (text) responses.push({ id, priority, text });
     };
 
@@ -503,17 +634,23 @@
       pushResponse('profile', 70, `${kb.profile.name} is an ${kb.profile.title} based in ${kb.profile.location}. ${kb.profile.summary}`);
     }
 
-    if (includesAny(normalizedQuestion, kb.chat?.categories?.experience) && kb.experience?.length >= 2) {
-      const primaryExperience = kb.experience[0];
-      const additionalCompanies = kb.experience
-        .slice(1, 4)
-        .map((entry) => entry.publicCompany || entry.company)
-        .join(', ');
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.activeWork)) {
+      pushResponse(
+        'activeWork',
+        71,
+        kb.profile.currentExperienceSummary || kb.profile.activeWork || 'I currently work remotely, focused on cybersecurity operations, IT administration, systems support, and secure infrastructure.'
+      );
+    }
 
+    if (
+      includesAny(normalizedQuestion, kb.chat?.categories?.experience) &&
+      !includesAny(normalizedQuestion, kb.chat?.categories?.activeWork) &&
+      kb.experience?.length >= 2
+    ) {
       pushResponse(
         'experience',
         68,
-        `I am a remote worker and cybersecurity analyst. My main experience includes ${(primaryExperience.publicCompany || primaryExperience.company)} as ${primaryExperience.roles.join(' / ')}${additionalCompanies ? `, plus ${additionalCompanies}` : ''}. Key work covers ${primaryExperience.highlights.join(', ')}.`
+        'My experience covers remote cybersecurity work, IT administration, systems support, endpoint protection, and business operations support across both confidential and on-site environments.'
       );
     }
 
@@ -567,20 +704,210 @@
     return unique.slice(0, 4).join(' ');
   }
 
-  function answerPortfolioQuestion(question) {
+  function detectPrimaryTopic(kb, normalizedQuestion, matchedProjects = []) {
+    if (matchedProjects.length) return 'project';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.activeWork)) return 'activeWork';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.projects)) return 'projects';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.experience)) return 'experience';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.techStack)) return 'techStack';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.strengths)) return 'strengths';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.certifications)) return 'certifications';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.education)) return 'education';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.contact)) return 'contact';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.location)) return 'location';
+    if (includesAny(normalizedQuestion, kb.chat?.categories?.profile)) return 'profile';
+    return '';
+  }
+
+  function isFollowUpPrompt(normalizedQuestion) {
+    const followUpTerms = [
+      'really', 'really?', 'how so', 'what else', 'tell me more', 'more',
+      'can you explain', 'explain more', 'what do you mean', 'yes?', 'yes'
+    ];
+
+    if (!normalizedQuestion) return false;
+    if (normalizedQuestion.split(' ').length <= 4 && includesAny(normalizedQuestion, followUpTerms)) return true;
+    return false;
+  }
+
+  function isDoubtPrompt(normalizedQuestion) {
+    const doubtTerms = ['are you sure', 'sure?', 'really', 'really?', 'is that true', 'seriously', 'you sure'];
+    return includesAny(normalizedQuestion, doubtTerms);
+  }
+
+  function isComparisonPrompt(normalizedQuestion) {
+    const comparisonTerms = ['which is best', 'which is better', 'which is strongest', 'which project is best', 'which project is strongest', 'best project', 'strongest project', 'top project', 'most important project', 'best skill', 'strongest skill', 'which skill is strongest', 'which strength is strongest'];
+    return includesAny(normalizedQuestion, comparisonTerms);
+  }
+
+  function buildDoubtResponse(kb, state) {
+    const topic = state.activeTopic;
+    const project = state.lastProject;
+
+    if (topic === 'project' && project) {
+      return `Yes, I am sure. ${project.name} is part of my portfolio because it reflects real work or a real project concept I have built and documented in a public-safe way.`;
+    }
+
+    if (topic === 'projects') {
+      return 'Yes, I am sure. The project responses are based on the portfolio entries shown on this website, so they stay within the public project information I have provided.';
+    }
+
+    if (topic === 'experience' || topic === 'activeWork') {
+      return 'Yes, I am sure. My experience responses are based on the public version of my work background, with confidential details intentionally kept private.';
+    }
+
+    if (topic === 'techStack' || topic === 'strengths') {
+      return 'Yes. Those responses are based on the tools, skills, and strengths listed directly in my portfolio.';
+    }
+
+    return 'Yes. My responses are based on the information currently presented in this portfolio.';
+  }
+
+  function buildComparisonResponse(kb, state, normalizedQuestion) {
+    if (normalizedQuestion.includes('project')) {
+      const strongestProject = (kb.projects || [])[0];
+      if (!strongestProject) return '';
+      return `One of the strongest projects in my portfolio is ${strongestProject.name}. It stands out because it shows practical delivery, clear business value, and structured implementation in a public-safe format.`;
+    }
+
+    if (normalizedQuestion.includes('skill') || normalizedQuestion.includes('strength')) {
+      return `My strongest areas are ${formatList((kb.strengths || []).slice(0, 3))}. Those are the skills I rely on most in day-to-day work.`;
+    }
+
+    if (state.activeTopic === 'projects') {
+      const strongestProject = (kb.projects || [])[0];
+      if (!strongestProject) return '';
+      return `If I had to highlight one first, I would point to ${strongestProject.name}. It represents one of the clearest examples of my work in the portfolio.`;
+    }
+
+    return '';
+  }
+
+  function buildFollowUpResponse(kb, state) {
+    const topic = state.activeTopic;
+    const project = state.lastProject;
+
+    if (topic === 'project' && project) {
+      return `Yes. ${project.name} is one of the stronger examples in the portfolio. It focused on ${formatList(project.highlights)}. If you want, I can also explain the stack or the purpose behind it.`;
+    }
+
+    if (topic === 'projects') {
+      const featuredProjects = (kb.projects || []).slice(0, 3).map((entry) => entry.name);
+      return `Yes. The main projects I usually highlight are ${formatList(featuredProjects)}. Each one reflects a different side of my work, from business systems to security and public-facing platforms.`;
+    }
+
+    if (topic === 'experience' || topic === 'activeWork') {
+      return 'Yes. My recent work is centered on remote cybersecurity operations, IT administration, systems support, and secure infrastructure. I can also break that down into tools, responsibilities, or day-to-day focus if you want.';
+    }
+
+    if (topic === 'techStack') {
+      return `Yes. My stack is a mix of IT operations, cybersecurity, web development, and databases. The main tools I often work with include ${formatList((kb.techStack.operations || []).slice(0, 4))} and ${formatList((kb.techStack.security || []).slice(0, 3))}.`;
+    }
+
+    if (topic === 'strengths') {
+      return `Yes. My strongest areas are ${formatList((kb.strengths || []).slice(0, 4))}. Those are the areas I rely on most in real work environments.`;
+    }
+
+    if (topic === 'education') {
+      return `Yes. I completed ${kb.education.degree} at ${kb.education.school}. That academic background helped build my foundation in systems, support, and practical IT problem-solving.`;
+    }
+
+    if (topic === 'certifications') {
+      return `Yes. My certifications are focused mainly on cybersecurity, Microsoft, and infrastructure fundamentals. Some of the key ones include ${formatList((kb.certifications || []).slice(0, 4))}.`;
+    }
+
+    if (topic === 'contact') {
+      return `Yes. The best way to reach me is by email at ${kb.contact.email}. If needed, I am also open to scheduled meetings through ${formatList(kb.contact.meetingOptions || [])}.`;
+    }
+
+    if (topic === 'location') {
+      return `Yes. I am based in ${kb.profile.location}. For privacy and safety, I usually keep location details at a general public level only.`;
+    }
+
+    if (topic === 'profile') {
+      return `Yes. I am ${kb.profile.name}, an ${kb.profile.title}. My work is mainly centered on dependable IT support, secure operations, and practical business-ready systems.`;
+    }
+
+    return '';
+  }
+
+  function humanizeChatReply(text, topic) {
+    const normalizedTopic = topic || '';
+    if (!text) return text;
+
+    const prefixMap = {
+      project: 'Yes.',
+      projects: 'Sure.',
+      experience: 'Yes.',
+      activeWork: 'Sure.',
+      techStack: 'Yes.',
+      strengths: 'Sure.',
+    };
+
+    const prefix = prefixMap[normalizedTopic];
+    if (!prefix) return text;
+    if (/^(yes|sure|of course|definitely)[.!?]/i.test(text)) return text;
+    return `${prefix} ${text}`;
+  }
+
+  function answerPortfolioQuestion(question, sessionState = {}) {
     const kb = buildPortfolioKnowledgeBase();
     const q = normalizeChatText(question);
     const parts = splitQuestionIntoParts(question);
 
     if (!q) {
-      return sanitizeChatReply(kb.chat?.emptyPrompt || 'Ask me about experience, projects, tech stack, certifications, education, or contact details.');
+      return {
+        text: sanitizeChatReply(kb.chat?.emptyPrompt || 'Ask me about experience, projects, tech stack, certifications, education, or contact details.'),
+        topic: sessionState.activeTopic || '',
+        project: sessionState.lastProject || null,
+      };
+    }
+
+    if (isComparisonPrompt(q)) {
+      const comparisonText = buildComparisonResponse(kb, sessionState, q);
+      if (comparisonText) {
+        const comparisonTopic = q.includes('skill') || q.includes('strength')
+          ? 'strengths'
+          : (q.includes('project') ? 'projects' : (sessionState.activeTopic || ''));
+        return {
+          text: sanitizeChatReply(comparisonText),
+          topic: comparisonTopic,
+          project: sessionState.lastProject || null,
+        };
+      }
+    }
+
+    if (isDoubtPrompt(q) && sessionState.activeTopic) {
+      const doubtText = buildDoubtResponse(kb, sessionState);
+      if (doubtText) {
+        return {
+          text: sanitizeChatReply(doubtText),
+          topic: sessionState.activeTopic,
+          project: sessionState.lastProject || null,
+        };
+      }
+    }
+
+    if (isFollowUpPrompt(q) && sessionState.activeTopic) {
+      const followUpText = buildFollowUpResponse(kb, sessionState);
+      if (followUpText) {
+        return {
+          text: sanitizeChatReply(followUpText),
+          topic: sessionState.activeTopic,
+          project: sessionState.lastProject || null,
+        };
+      }
     }
 
     const detections = [];
     const analyzedParts = [q, ...parts.filter((part) => part !== q)];
+    const matchedProjects = [];
+    const suppressedCategoryIds = new Set();
 
     analyzedParts.forEach((part) => {
-      findChatIntentMatches(kb, part).forEach((intent) => {
+      const matchedIntents = findChatIntentMatches(kb, part);
+
+      matchedIntents.forEach((intent) => {
         detections.push({
           id: `intent:${intent.id}`,
           priority: intent.priority,
@@ -589,7 +916,16 @@
         });
       });
 
+      if (matchedIntents.some((intent) => intent.id === 'activeWork')) {
+        suppressedCategoryIds.add('activeWork');
+      }
+
+      if (matchedIntents.some((intent) => intent.id === 'privacyLocation')) {
+        suppressedCategoryIds.add('location');
+      }
+
       findProjectMatches(kb, part).forEach((project) => {
+        matchedProjects.push(project);
         detections.push({
           id: `project:${project.name}`,
           priority: 75,
@@ -598,7 +934,7 @@
         });
       });
 
-      collectCategoryResponses(kb, part).forEach((response) => {
+      collectCategoryResponses(kb, part, { suppressedCategoryIds }).forEach((response) => {
         detections.push({
           id: `category:${response.id}`,
           priority: response.priority,
@@ -608,10 +944,17 @@
       });
     });
 
-    return combineDetectedResponses(
+    const detectedTopic = detectPrimaryTopic(kb, q, matchedProjects);
+    const replyText = combineDetectedResponses(
       detections,
       kb.chat?.fallback || 'I can answer from this portfolio about experience, projects, tech stack, certifications, education, strengths, and contact details. Try a more specific question.'
     );
+
+    return {
+      text: sanitizeChatReply(humanizeChatReply(replyText, detectedTopic)),
+      topic: detectedTopic || sessionState.activeTopic || '',
+      project: matchedProjects[0] || null,
+    };
   }
 
   function initPortfolioChat() {
@@ -626,19 +969,56 @@
     if (!chatButton || !chatWidget || !closeButton || !chatForm || !chatInput || !chatMessages) return;
 
     let isSubmitting = false;
+    let hasShownLeadCapture = false;
+    const chatSessionState = {
+      activeTopic: '',
+      lastProject: null,
+      lastUserQuestion: '',
+      lastBotReply: '',
+    };
 
-    const appendMessage = (text, type = 'bot') => {
+    const appendMessage = (text, type = 'bot', options = {}) => {
       const wrapper = document.createElement('div');
       wrapper.className = `chat-message ${type}`;
 
       const bubble = document.createElement('div');
       bubble.className = `chat-bubble ${type}`;
-      bubble.textContent = text;
+      if (options.html) {
+        bubble.innerHTML = text;
+      } else {
+        bubble.textContent = text;
+      }
 
       wrapper.appendChild(bubble);
       chatMessages.appendChild(wrapper);
       chatMessages.scrollTop = chatMessages.scrollHeight;
       return wrapper;
+    };
+
+    const appendLeadCaptureCard = () => {
+      if (hasShownLeadCapture) return;
+
+      const kb = buildPortfolioKnowledgeBase();
+      const leadCopy = kb.chat?.leadCapture || {};
+
+      appendMessage(`
+        <div class="chat-inline-card">
+          <p class="chat-inline-title">${escapeHtml(leadCopy.title || 'Oops! Need more?')}</p>
+          <p class="chat-inline-copy">${escapeHtml(leadCopy.description || 'Hi guest! Please indicate your name here, this is for monitoring purposes only.')}</p>
+          <form class="chat-inline-form" data-chat-lead-form="true">
+            <label class="chat-inline-label" for="chatLeadFirstName">${escapeHtml(leadCopy.firstNameLabel || 'Firstname')}</label>
+            <input id="chatLeadFirstName" name="firstName" type="text" class="chat-inline-input" autocomplete="given-name" required />
+            <label class="chat-inline-label" for="chatLeadLastName">${escapeHtml(leadCopy.lastNameLabel || 'Lastname')}</label>
+            <input id="chatLeadLastName" name="lastName" type="text" class="chat-inline-input" autocomplete="family-name" required />
+            <label class="chat-inline-label" for="chatLeadEmail">${escapeHtml(leadCopy.emailLabel || 'Email')}</label>
+            <input id="chatLeadEmail" name="email" type="email" class="chat-inline-input" autocomplete="email" required />
+            <p class="chat-inline-feedback" data-chat-lead-feedback="true" hidden></p>
+            <button class="chat-inline-button" type="submit">${escapeHtml(leadCopy.buttonLabel || 'Submit')}</button>
+          </form>
+        </div>
+      `, 'bot', { html: true });
+
+      hasShownLeadCapture = true;
     };
 
     const setChatPending = (pending) => {
@@ -653,6 +1033,10 @@
     const openChat = () => {
       chatWidget.classList.remove('d-none');
       chatWidget.setAttribute('aria-hidden', 'false');
+      trackAnalyticsEvent('chat_open', {
+        event_category: 'engagement',
+        event_label: 'portfolio_chat',
+      });
 
       if (!chatMessages.dataset.initialized) {
         appendMessage(buildPortfolioKnowledgeBase().chat?.greeting || 'Hi there! Feel free to ask me about my portfolio.', 'bot');
@@ -670,6 +1054,70 @@
     chatButton.addEventListener('click', openChat);
     closeButton.addEventListener('click', closeChat);
 
+    chatMessages.addEventListener('submit', async (event) => {
+      const form = event.target.closest('[data-chat-lead-form="true"]');
+      if (!form) return;
+
+      event.preventDefault();
+
+      const kb = buildPortfolioKnowledgeBase();
+      const leadCopy = kb.chat?.leadCapture || {};
+      const firstNameInput = form.querySelector('input[name="firstName"]');
+      const lastNameInput = form.querySelector('input[name="lastName"]');
+      const emailInput = form.querySelector('input[name="email"]');
+      const feedback = form.querySelector('[data-chat-lead-feedback="true"]');
+      const firstName = firstNameInput ? firstNameInput.value.trim() : '';
+      const lastName = lastNameInput ? lastNameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+
+      if (!isLikelyValidNamePart(firstName) || !isLikelyValidNamePart(lastName) || !isLikelyValidEmail(email)) {
+        if (feedback) {
+          feedback.hidden = false;
+          feedback.textContent = leadCopy.invalidMessage || 'Please provide exact firstname, lastname, and email. Thank you.';
+        }
+        return;
+      }
+
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Saving...';
+      }
+
+      const payload = {
+        firstName,
+        lastName,
+        fullName: `${firstName} ${lastName}`.trim(),
+        email,
+        source: 'chatbot',
+        question: getLastUserChatQuestion(chatMessages),
+        pageUrl: window.location.href,
+        userAgent: navigator.userAgent,
+        submittedAt: new Date().toISOString(),
+      };
+
+      saveChatLead(firstName, lastName, email);
+      let submissionResult = { delivered: false, skipped: true };
+
+      try {
+        submissionResult = await submitChatLeadToWebhook(leadCopy.webhookUrl, payload);
+      } catch (error) {
+        console.warn('Unable to deliver chat lead to webhook.', error);
+      }
+
+      trackAnalyticsEvent('guest_form_submit', {
+        event_category: 'lead',
+        event_label: 'chat_guest_form',
+      });
+
+      const successText = submissionResult.delivered
+        ? (leadCopy.successMessage || 'Thank you. Your details were noted.')
+        : (leadCopy.webhookPendingMessage || 'Google Sheets webhook is not connected yet. Saved locally for now.');
+
+      form.innerHTML = `<p class="chat-inline-success">${escapeHtml(successText)}</p>`;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+
     chatForm.addEventListener('submit', (event) => {
       event.preventDefault();
       if (isSubmitting) return;
@@ -677,6 +1125,10 @@
       const userMessage = chatInput.value.trim();
       if (!userMessage) return;
 
+      trackAnalyticsEvent('chat_message_send', {
+        event_category: 'engagement',
+        event_label: userMessage.slice(0, 80),
+      });
       appendMessage(userMessage, 'user');
       chatInput.value = '';
       setChatPending(true);
@@ -685,8 +1137,17 @@
       typingMessage.classList.add('chat-message-pending');
 
       window.setTimeout(() => {
+          const kb = buildPortfolioKnowledgeBase();
           typingMessage.remove();
-          appendMessage(answerPortfolioQuestion(userMessage), 'bot');
+          const answer = answerPortfolioQuestion(userMessage, chatSessionState);
+          chatSessionState.activeTopic = answer.topic || chatSessionState.activeTopic;
+          chatSessionState.lastProject = answer.project || chatSessionState.lastProject;
+          chatSessionState.lastUserQuestion = userMessage;
+          chatSessionState.lastBotReply = answer.text;
+          appendMessage(answer.text, 'bot');
+          if (shouldPromptForLeadCapture(userMessage, kb)) {
+            appendLeadCaptureCard();
+          }
           setChatPending(false);
           chatInput.focus();
         }, 220);
@@ -704,6 +1165,7 @@
       initModalHandlers();
       initQuickActionTransitions();
       initChatButtonAnimation();
+      initAnalyticsTracking();
       initPortfolioChat();
       showSection('about', { preserveHistory: false });
     };
@@ -1030,8 +1492,8 @@ function initModalHandlers() {
       subtitle: 'Overall professional history across anytype of roles, and business-facing technical service.',
       companies: [
         {
-          company: 'LevelBlue',
-          publicCompany: 'LevelBlue',
+          company: 'Confidential Company',
+          publicCompany: 'Confidential Company',
           blurCompany: true,
           iconClass: 'fas fa-building-shield',
           iconColorClass: 'text-indigo-600',
@@ -1039,21 +1501,21 @@ function initModalHandlers() {
           industry: 'Cybersecurity Operations',
           roles: [
             {
-              title: 'Cybersecurity Expert - Remote',
+              title: 'Remote IT and Cybersecurity Specialist',
               start: '2026-02',
               end: 'present',
             },
           ],
           details: [
-            'Supports remote cybersecurity operations, monitoring-focused work, and security posture improvements in a managed security environment.',
-            'Handles security reviews, endpoint visibility support, and practical threat-aware administration without exposing client-sensitive details.',
+            'Supports remote cybersecurity operations, monitoring-focused work, and secure day-to-day IT administration in a confidential environment.',
+            'Handles endpoint visibility, protection support, and practical threat-aware administration without exposing sensitive company details.',
           ],
           competencies: [
             'Cybersecurity Operations',
-            'Remote Security Support',
+            'Remote IT Support',
             'Threat Monitoring',
             'Endpoint Security',
-            'Security Administration',
+            'Systems Administration',
           ],
         },
         {
@@ -1323,7 +1785,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-asset',
-          title: 'PFZ Asset Inventory Management',
+          title: 'PFZ Assets AIM',
           category: 'Operations System',
           icon: 'fa-solid fa-box-archive',
           summary: 'Asset tracking and inventory visibility for internal operational use.',
@@ -1349,7 +1811,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-delivery',
-          title: 'PFZ Delivery App',
+          title: 'PFZ Shipz',
           category: 'Logistics App',
           icon: 'fa-solid fa-truck',
           summary: 'Delivery-focused application supporting tracking and operational coordination.',
@@ -1362,7 +1824,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-sfa',
-          title: 'PFZ SFA Booking App',
+          title: 'PFZ Route Z',
           category: 'Sales Workflow',
           icon: 'fa-solid fa-calendar-check',
           summary: 'Booking and field-activity workflow support for sales-force operations.',
@@ -1375,7 +1837,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-combined',
-          title: 'PFZ Delivery x SFA Booking App',
+          title: 'PFZ Dash Z',
           category: 'Logistics Workflow',
           icon: 'fa-solid fa-truck-fast',
           summary: 'A combined operations workflow connecting booking, assignment, and delivery tracking into a single public-safe showcase of logistics coordination.',
@@ -1998,7 +2460,7 @@ function initModalHandlers() {
               <div class="experience-company">
                 <i class="${company.iconClass} ${company.iconColorClass}"></i>
                 <div>
-                  <h4 class="experience-company-name ${company.blurCompany ? 'experience-company-name-blur' : ''}">${company.company}</h4>
+                  <h4 class="experience-company-name ${company.blurCompany ? 'experience-company-name-blur' : ''}">${company.publicCompany || company.company}</h4>
                   <p class="experience-company-industry">${company.industry}</p>
                 </div>
               </div>
@@ -2307,7 +2769,7 @@ function initModalHandlers() {
   function renderProjectsContent(section) {
     const projects = section.items || [];
     const renderProjectRow = (project) => `
-      <article class="portfolio-project-row" ${project.id ? `id="${project.id}"` : ''}>
+      <article class="portfolio-project-row" ${project.id ? `id="${project.id}"` : ''} data-project-title="${escapeHtml(project.title || 'Project')}">
         <div class="portfolio-project-archive-main">
           <div class="portfolio-project-archive-titleline">
             <h3>${project.title}</h3>

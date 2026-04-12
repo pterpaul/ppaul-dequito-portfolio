@@ -1771,6 +1771,74 @@ body.theme-dark {
   font-style: italic;
 }
 
+.chat-inline-card {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.chat-inline-title {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.chat-inline-copy,
+.chat-inline-success,
+.chat-inline-feedback {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.chat-inline-form {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.chat-inline-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.chat-inline-input {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  padding: 0.58rem 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+
+.chat-inline-input:focus {
+  outline: none;
+  border-color: rgba(13, 117, 253, 0.38);
+  box-shadow: 0 0 0 3px rgba(13, 117, 253, 0.12);
+}
+
+.chat-inline-button {
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--pfz1), var(--primary-dark));
+  color: #fff;
+  min-height: 2.2rem;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.chat-inline-feedback {
+  color: #c2410c;
+}
+
+.chat-inline-success {
+  color: #166534;
+  font-weight: 600;
+}
+
 .chat-footer {
   display: flex;
   align-items: flex-end;
@@ -1887,6 +1955,20 @@ html.dark .chat-header-avatar {
 html.dark .chat-bubble.bot {
   background: rgba(255, 255, 255, 0.07);
   color: var(--text);
+}
+
+html.dark .chat-inline-input {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: rgba(148, 163, 184, 0.2);
+  color: #e5eef9;
+}
+
+html.dark .chat-inline-feedback {
+  color: #fdba74;
+}
+
+html.dark .chat-inline-success {
+  color: #86efac;
 }
 
 html.dark .chat-footer {
