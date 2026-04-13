@@ -1492,8 +1492,8 @@ function initModalHandlers() {
       subtitle: 'Overall professional history across anytype of roles, and business-facing technical service.',
       companies: [
         {
-          company: 'Confidential Company',
-          publicCompany: 'Confidential Company',
+          company: 'LevelBlue',
+          publicCompany: 'LevelBlue',
           blurCompany: true,
           iconClass: 'fas fa-building-shield',
           iconColorClass: 'text-indigo-600',
@@ -1501,7 +1501,7 @@ function initModalHandlers() {
           industry: 'Cybersecurity Operations',
           roles: [
             {
-              title: 'Remote IT and Cybersecurity Specialist',
+              title: 'Cyber Security Expert',
               start: '2026-02',
               end: 'present',
             },
@@ -1607,7 +1607,7 @@ function initModalHandlers() {
         },
         {
           company: 'Nokia Solutions and Networks',
-          publicCompany: 'Confidential Company',
+          publicCompany: 'Nokia Solutions and Networks',
           blurCompany: true,
           iconClass: 'fas fa-building',
           iconColorClass: 'text-amber-600',
