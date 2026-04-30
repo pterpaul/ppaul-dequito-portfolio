@@ -1577,7 +1577,7 @@ function initModalHandlers() {
             'Monitored networks and endpoints to reduce cybersecurity risks and strengthen operational stability.',
             'Guided IT teams, provided mentoring, and optimized workflows across multiple branches.',
             'Performed daily IT operations and routine technical task assignments consistently.',
-            'Developed and deployed PFZ Asset Inventory Management System, improving asset tracking and operational efficiency across branches.',
+            'Developed and deployed PFZ AIM, improving asset tracking and operational efficiency across branches.',
           ],
         },
         {
@@ -1785,7 +1785,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-asset',
-          title: 'PFZ Assets AIM',
+          title: 'PFZ AIM',
           category: 'Operations System',
           icon: 'fa-solid fa-box-archive',
           summary: 'Asset tracking and inventory visibility for internal operational use.',
