@@ -103,20 +103,31 @@ window.addEventListener('beforeprint', function(e) {
 
 // Optional: Detect if developer tools are open (not 100% reliable)
 let devtoolsOpen = false;
+let alertInterval = null;
+
 const threshold = 160;
 
 const detectDevTools = () => {
-  if (window.outerHeight - window.innerHeight > threshold || window.outerWidth - window.innerWidth > threshold) {
+  const isOpen =
+    window.outerHeight - window.innerHeight > threshold ||
+    window.outerWidth - window.innerWidth > threshold;
+
+  if (isOpen) {
     if (!devtoolsOpen) {
       devtoolsOpen = true;
-      // You can add an alert or redirect here
-      alert('Developer tools detected. Please close them for better experience.');
-      // Or redirect: window.location.href = 'https://example.com';
+      // Start repeating alert every 2 seconds
+      alertInterval = setInterval(() => {
+        alert('Developer tools detected. Your Device, IP Address and logs are detected! Please close the developer tools now for better experience.');
+      }, 800);
     }
   } else {
-    devtoolsOpen = false;
+    if (devtoolsOpen) {
+      devtoolsOpen = false;
+      // Stop the alert when devtools is closed
+      clearInterval(alertInterval);
+      alertInterval = null;
+    }
   }
 };
 
-// Check periodically
 setInterval(detectDevTools, 500);
