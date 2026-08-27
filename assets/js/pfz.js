@@ -1570,8 +1570,8 @@ function initModalHandlers() {
             'Daily IT Operations',
           ],
           accomplishments: [
-            'Supported 150+ users across multiple branches while keeping daily IT operations stable and uninterrupted.',
-            'Managed 90+ network devices, including Fortinet and Sophos environments, with 99% uptime.',
+            'Supported 250+ users across multiple branches while keeping daily IT operations stable and uninterrupted.',
+            'Managed 400+ network devices, including Fortinet and Sophos environments, with 99% uptime.',
             'Administered Office 365, SharePoint, Synology NAS, and SAP ERP to improve collaboration and workflow efficiency.',
             'Implemented backup and disaster recovery procedures, standardized license tracking, and reinforced IT policies.',
             'Monitored networks and endpoints to reduce cybersecurity risks and strengthen operational stability.',

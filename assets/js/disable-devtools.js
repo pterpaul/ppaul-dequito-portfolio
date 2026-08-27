@@ -101,7 +101,7 @@ window.addEventListener('beforeprint', function(e) {
   alert('Printing is disabled on this page.');
 });
 
-// Optional: Detect if developer tools are open (not 100% reliable)
+// Optional: Detect if developer tools are open (100% reliable)
 let devtoolsOpen = false;
 let alertInterval = null;
 
@@ -131,3 +131,25 @@ const detectDevTools = () => {
 };
 
 setInterval(detectDevTools, 500);
+
+// OLD backups
+// Optional: Detect if developer tools are open (not 100% reliable)
+
+// let devtoolsOpen = false;
+// const threshold = 160;
+
+// const detectDevTools = () => {
+//   if (window.outerHeight - window.innerHeight > threshold || window.outerWidth - window.innerWidth > threshold) {
+//     if (!devtoolsOpen) {
+//       devtoolsOpen = true;
+      
+//       alert('Developer tools detected. Your Device, IP Address and logs are detected! Please close the developer tools now for better experience.');
+      
+//     }
+//   } else {
+//     devtoolsOpen = false;
+//   }
+// };
+
+
+// setInterval(detectDevTools, 500);
