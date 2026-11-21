@@ -1577,7 +1577,7 @@ function initModalHandlers() {
             'Monitored networks and endpoints to reduce cybersecurity risks and strengthen operational stability.',
             'Guided IT teams, provided mentoring, and optimized workflows across multiple branches.',
             'Performed daily IT operations and routine technical task assignments consistently.',
-            'Developed and deployed PFZ AIM, improving asset tracking and operational efficiency across branches.',
+            'Developed and deployed Pawerkit AIM, improving asset tracking and operational efficiency across branches.',
           ],
         },
         {
@@ -1785,7 +1785,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-asset',
-          title: 'PFZ AIM',
+          title: 'Pawerkit AIM',
           category: 'Operations System',
           icon: 'fa-solid fa-box-archive',
           summary: 'Asset tracking and inventory visibility for internal operational use.',
@@ -1798,7 +1798,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-payroll',
-          title: 'PFZ Payroll',
+          title: 'Pawerkit Payroll',
           category: 'Business Operations',
           icon: 'fa-solid fa-money-check-dollar',
           summary: 'Payroll-related workflow support designed for internal business operations.',
@@ -1811,7 +1811,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-delivery',
-          title: 'PFZ Shipz',
+          title: 'Pawerkit Shipz',
           category: 'Logistics App',
           icon: 'fa-solid fa-truck',
           summary: 'Delivery-focused application supporting tracking and operational coordination.',
@@ -1824,7 +1824,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-sfa',
-          title: 'PFZ Route Z',
+          title: 'Pawerkit Route Z',
           category: 'Sales Workflow',
           icon: 'fa-solid fa-calendar-check',
           summary: 'Booking and field-activity workflow support for sales-force operations.',
@@ -1837,7 +1837,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-combined',
-          title: 'PFZ Dash Z',
+          title: 'Pawerkit Dash Z',
           category: 'Logistics Workflow',
           icon: 'fa-solid fa-truck-fast',
           summary: 'A combined operations workflow connecting booking, assignment, and delivery tracking into a single public-safe showcase of logistics coordination.',
@@ -1855,7 +1855,7 @@ function initModalHandlers() {
         },
         {
           id: 'project-pfz-saas',
-          title: 'PFZ SaaS',
+          title: 'Pawerkit SaaS',
           category: 'Product Concept',
           icon: 'fa-solid fa-cloud',
           summary: 'A software-as-a-service concept focused on reusable business workflow delivery.',
